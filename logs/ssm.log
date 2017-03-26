@@ -1,0 +1,49 @@
+[INFO] [2017-03-20 11:31:37][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [applicationContext.xml]
+  [INFO] [2017-03-20 11:31:37][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-dao.xml]
+  [INFO] [2017-03-20 11:31:37][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-db.xml]
+  [INFO] [2017-03-20 11:31:38][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-tx.xml]
+  [INFO] [2017-03-20 11:31:38][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@5d624da6: startup date [Mon Mar 20 11:31:38 CST 2017]; root of context hierarchy
+  [INFO] [2017-03-20 11:31:38][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-03-20 11:31:38][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-03-20 11:31:38][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@5d624da6: startup date [Mon Mar 20 11:31:38 CST 2017]; root of context hierarchy
+  [INFO] [2017-03-20 11:33:38][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [applicationContext.xml]
+  [INFO] [2017-03-20 11:33:38][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-dao.xml]
+  [INFO] [2017-03-20 11:33:38][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-db.xml]
+  [INFO] [2017-03-20 11:33:38][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-tx.xml]
+  [INFO] [2017-03-20 11:33:38][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@5d624da6: startup date [Mon Mar 20 11:33:38 CST 2017]; root of context hierarchy
+  [INFO] [2017-03-20 11:33:38][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-03-20 11:33:38][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-03-20 11:33:39][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@5d624da6: startup date [Mon Mar 20 11:33:38 CST 2017]; root of context hierarchy
+  [INFO] [2017-03-20 11:45:38][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [applicationContext.xml]
+  [INFO] [2017-03-20 11:45:38][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-dao.xml]
+  [INFO] [2017-03-20 11:45:38][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-db.xml]
+  [INFO] [2017-03-20 11:45:39][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-tx.xml]
+  [INFO] [2017-03-20 11:45:39][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@5d624da6: startup date [Mon Mar 20 11:45:39 CST 2017]; root of context hierarchy
+  [INFO] [2017-03-20 11:45:39][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-03-20 11:45:39][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-03-20 11:45:40][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [applicationContext.xml]
+  [INFO] [2017-03-20 11:45:40][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@5d624da6: startup date [Mon Mar 20 11:45:39 CST 2017]; root of context hierarchy
+  [INFO] [2017-03-20 11:45:40][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-dao.xml]
+  [INFO] [2017-03-20 11:45:40][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-db.xml]
+  [INFO] [2017-03-20 11:45:40][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-tx.xml]
+  [INFO] [2017-03-20 11:45:40][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@1324409e: startup date [Mon Mar 20 11:45:40 CST 2017]; root of context hierarchy
+  [INFO] [2017-03-20 11:45:40][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-03-20 11:45:40][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-03-20 11:45:41][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@1324409e: startup date [Mon Mar 20 11:45:40 CST 2017]; root of context hierarchy
+  [INFO] [2017-03-20 12:12:32][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [applicationContext.xml]
+  [INFO] [2017-03-20 12:12:32][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-dao.xml]
+  [INFO] [2017-03-20 12:12:32][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-db.xml]
+  [INFO] [2017-03-20 12:12:32][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-tx.xml]
+  [INFO] [2017-03-20 12:12:33][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@1324409e: startup date [Mon Mar 20 12:12:33 CST 2017]; root of context hierarchy
+  [INFO] [2017-03-20 12:12:33][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-03-20 12:12:33][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-03-20 12:12:34][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@1324409e: startup date [Mon Mar 20 12:12:33 CST 2017]; root of context hierarchy
+  [INFO] [2017-03-20 12:13:22][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [applicationContext.xml]
+  [INFO] [2017-03-20 12:13:22][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-dao.xml]
+  [INFO] [2017-03-20 12:13:22][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-db.xml]
+  [INFO] [2017-03-20 12:13:23][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-tx.xml]
+  [INFO] [2017-03-20 12:13:23][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@5d624da6: startup date [Mon Mar 20 12:13:23 CST 2017]; root of context hierarchy
+  [INFO] [2017-03-20 12:13:23][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-03-20 12:13:23][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-03-20 12:13:24][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@5d624da6: startup date [Mon Mar 20 12:13:23 CST 2017]; root of context hierarchy
+  
