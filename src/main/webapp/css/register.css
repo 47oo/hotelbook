@@ -1,0 +1,91 @@
+/*�ֱ���HTML�кͱ��֮�ľ�����ʽ*/
+
+html, body, h1, div, fieldset, legend, ol, li {
+    margin: 0;
+    padding: 0;
+}
+/*����<body>�����ʽ*/
+body {
+    background: #ffffff;
+    color: #111111;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    padding-left: 20px;
+    
+}
+/*���帶�����ݵ���ʽ*/
+div#payment {
+    background: #9cbc2c;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 20px;
+    width: 400px;
+    margin:auto;
+}
+div#payment fieldset {
+    border: none;
+    margin-bottom: 10px;
+}
+div#payment fieldset:last-of-type { margin-bottom: 0; }
+div#payment legend {
+    color: #384313;
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    text-shadow: 0 1px 1px #c0d576;
+}
+div#payment > fieldset > legend:before {
+    counter-increment: fieldsets;
+}
+div#payment fieldset fieldset legend {
+    color: #111111;
+    font-size: 13px;
+    font-weight: normal;
+    padding-bottom: 0;
+}
+div#payment ol li {
+    background: #b9cf6a;
+    background: rgba(255, 255, 255, .3);
+    border-color: #e3ebc3;
+    border-color: rgba(255, 255, 255, .6);
+    border-style: solid;
+    border-width: 2px;
+    -webkit-border-radius: 5px;
+    line-height: 30px;
+    list-style: none;
+    padding: 5px 10px;
+    margin-bottom: 2px;
+}
+div#payment ol ol li {
+    background: none;
+    border: none;
+    float: left;
+}
+div#payment label {
+    float: left;
+    font-size: 13px;
+    width: 110px;
+}
+div#payment fieldset fieldset label {
+    background: none no-repeat left 50%;
+    line-height: 20px;
+    padding: 0 0 0 30px;
+    width: auto;
+}
+div#payment fieldset fieldset label:hover { cursor: pointer; }
+div#payment input:not([type=radio]), div#payment textarea {
+    background: #ffffff;
+    border: #FC3 solid 1px;
+    -webkit-border-radius: 3px;
+    font: italic 13px Georgia, "Times New Roman", Times, serif;
+    outline: none;
+    padding: 5px;
+    width: 200px;
+}
+div#payment input:not([type=submit]):focus, div#payment textarea:focus {
+    background: #eaeaea;
+    border: #F00 solid 1px;
+}
+div#payment input[type=radio] {
+    float: left;
+    margin-right: 5px;
+}

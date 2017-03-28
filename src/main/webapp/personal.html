@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>个人中心</title>
+<style type="text/css">
+body {
+   background: url(images/apple1.jpg)  center no-repeat;
+   font-family: Georgia, "Times New Roman", Times, serif;
+   padding: 0;
+   margin:0;
+   color: #111111;
+   padding-left: 20px;
+}
+ul.osx-dock {
+    display: inline-block;
+    height: 130px;
+    padding: 0 40px 0 0;
+    overflow: hidden;
+    margin: 0 0 0 40px;
+}
+ul.osx-dock li {
+    display: block;
+    position: relative;
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin: 60px 0 4px 0;
+    -webkit-transition: 0.15s linear;
+    -webkit-transition-property: -webkit-transdiv margin;
+    text-align: center;
+}
+ul.osx-dock li a {
+    display: block;
+    height: 50px;
+    padding: 0 1px;
+    -webkit-transition: 0.15s linear;
+    -webkit-transition-property: -webkit-transdiv margin;
+    margin: 0;
+    -webkit-box-reflect: below 2px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.45, transparent), to(rgba(255, 255, 255, 0.25)));
+}
+ul.osx-dock li a img { width: 48px; }
+ul.osx-dock li:hover {
+    margin-left: 9px;
+    margin-right: 9px;
+    z-index: 200;
+}
+ul.osx-dock li:hover a {
+    -webkit-transdiv-origin: center bottom;
+    -webkit-transdiv: scale(1.5);
+}
+ul.osx-dock li span {
+    position: absolute;
+    bottom: 80px;
+    margin: 0 auto;
+    display: none;
+    width: auto;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 3px 6px;
+    -webkit-border-radius: 6px;
+    color: #fff;
+}
+ul.osx-dock li:hover span { display: block; }
+div#dockContainer {
+    position: fixed;
+    bottom: 12px;
+    height: 120px;
+    padding: 50px 0 0;
+    text-align: center;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    width: 100%;
+    line-height: 1;
+    z-index: 100;
+}
+div#dockWrapper {
+    width: auto;
+    display: inline-block;
+    position: relative;
+    border-bottom: solid 2px rgba(255, 255, 255, .35);
+    line-height: 0;
+}
+#==========================
+div#payment {
+    background: #9cbc2c;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 20px;
+    width: 400px;
+    margin:auto;
+}
+div#payment fieldset {
+    border: none;
+    margin-bottom: 10px;
+}
+div#payment fieldset:last-of-type { margin-bottom: 0; }
+div#payment legend {
+    color: #384313;
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    text-shadow: 0 20px 1px 1px #c0d576;
+}
+div#payment > fieldset > legend:before {
+    counter-increment: fieldsets;
+}
+div#payment fieldset fieldset legend {
+    color: #111111;
+    font-size: 13px;
+    font-weight: normal;
+    padding-bottom: 0;
+}
+div#payment ol li {
+    background: #b9cf6a;
+    background: rgba(255, 255, 255, .3);
+    border-color: #e3ebc3;
+    border-color: rgba(255, 255, 255, .6);
+    border-style: solid;
+    border-width: 2px;
+    -webkit-border-radius: 5px;
+    line-height: 30px;
+    list-style: none;
+    padding: 5px 10px;
+    margin-bottom: 2px;
+}
+div#payment ol ol li {
+    background: none;
+    border: none;
+    float: left;
+}
+div#payment label {
+    float: left;
+    font-size: 13px;
+    width: 110px;
+}
+div#payment fieldset fieldset label {
+    background: none no-repeat left 50%;
+    line-height: 20px;
+    padding: 0 0 0 30px;
+    width: auto;
+}
+div#payment fieldset fieldset label:hover { cursor: pointer; }
+div#payment input:not([type=radio]), div#payment textarea {
+    background: #ffffff;
+    border: #FC3 solid 1px;
+    -webkit-border-radius: 3px;
+    font: italic 13px Georgia, "Times New Roman", Times, serif;
+    outline: none;
+    padding: 5px;
+    width: 200px;
+}
+div#payment input:not([type=submit]):focus, div#payment textarea:focus {
+    background: #eaeaea;
+    border: #F00 solid 1px;
+}
+div#payment input[type=radio] {
+    float: left;
+    margin-right: 5px;
+}
+</style>
+</head>
+
+<body>
+<div id=payment>
+	 <fieldset>
+		<ol>
+            <li>
+               个人信息
+			</li>
+		</ol>
+        <ol>
+            <li>
+                <label for=name>帐号:</label>
+                <input id=name name=name type=text placeholder="请输入用户名" required autofocus>
+            </li>
+			<li>
+                <label for=phone>手机号</label>
+                <input id=phone name=phone type=text placeholder="例如:18883288282" required>
+            </li>
+			<li>
+                <label for=idcard>身份证:</label>
+                <input id=idcard name=idcard type=password placeholder="身份证信息" required>
+            </li>
+        </ol>
+    </fieldset>
+</div>
+<div id="dockContainer">
+    <div id="dockWrapper">
+        <ul class="osx-dock">
+            <li class="active"> <span>ZURB</span> <a href="#" title="个人信息"><img src="images/zurb-icon.png" /></a> </li>
+            <li> <span>LinkedIn</span> <a href="#" title="酒店预定"><img src="images/linkedin-icon.png" /></a> </li>
+            <li> <span>Notable</span> <a href="#" title="酒店订单"><img src="images/notable-icon.png" /></a> </li>
+			<li> <span>last.fm</span> <a href="#" title="修改密码"><img src="images/lastfm-icon.png" /></a> </li>
+            <li> <span>last.fm</span> <a href="#" title="退出"><img src="images/lastfm-icon.png" /></a> </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

@@ -8,5 +8,16 @@ namespace：必须与对应的接口全类名一致  UserMapper.java
  <mapper namespace="com.hotel.dao.IUserDAO">  
     <select id="getId" resultType="int">    
         select id from t_test    
-    </select>   
+    </select>
+    <insert id="insertUser" parameterType="com.hotel.domain.User">
+    	insert into USER(
+    		name,realname,password,phone,idcard
+    	)
+    	values(
+    		#{name},#{realname},#{password},#{phone},#{idcard}
+    	)
+    </insert>
+    <select id="hasUser" parameterType="com.hotel.domain.User" resultType="int" >
+    	select count(1) from USER where name=#{name} and password=#{password}
+    </select>	   
  </mapper>  
