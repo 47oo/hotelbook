@@ -11,6 +11,8 @@ public class User {
 	private String phone;
 	//身份证信息
 	private String idcard;
+	//预定房间类型
+	private String type_id;
 	public String getName() {
 		return name;
 	}
@@ -40,5 +42,11 @@ public class User {
 	}
 	public void setIdcard(String idcard) {
 		this.idcard = idcard;
+	}
+	public String getType_id() {
+		return type_id;
+	}
+	public void setType_id(String type_id) {
+		this.type_id = type_id;
 	}
 }
