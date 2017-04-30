@@ -11,6 +11,7 @@ import com.hotel.service.IUserService;
 import com.hotel.vo.ResponseJson;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 	@Autowired
 	private IUserService is;
