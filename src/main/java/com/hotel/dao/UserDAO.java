@@ -2,6 +2,8 @@ package com.hotel.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.hotel.model.User;
 
 /**
@@ -20,7 +22,7 @@ public interface UserDAO {
 	 * 
 	 * @param id
 	 */
-	public void deleteById(int id);
+	public void deleteById(@Param("id")int id);
 
 	/**
 	 * 
@@ -28,7 +30,7 @@ public interface UserDAO {
 	 */
 	public void insertUser(User user);
 
-	public List<User> listToAdmin();
+	public List<User> listToAdmin(@Param("start")int start,@Param("size")int size);
 
 	/**
 	 * 

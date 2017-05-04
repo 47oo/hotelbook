@@ -5,19 +5,29 @@
 namespace：必须与对应的接口全类名一致  UserMapper.java  
     id ：必须与对应接口的某个对应的方法名一致即必须要和UserMapper.java接口中的方法同名。  
  -->    
- <mapper namespace="com.hotel.dao.IUserDAO">  
-    <select id="getId" resultType="int">    
-        select id from t_test    
-    </select>
-    <insert id="insertUser" parameterType="com.hotel.domain.User">
-    	insert into USER(
-    		name,realname,password,phone,idcard
+ <mapper namespace="com.hotel.dao.UserDAO">  
+    <insert id="insertUser" parameterType="com.hotel.model.User">
+    	insert into user(
+    		username,password,email,phone,idcard,name
     	)
     	values(
-    		#{name},#{realname},#{password},#{phone},#{idcard}
+    		#{username},#{password},#{email},#{phone},#{idcard},#{name}
     	)
     </insert>
-    <select id="hasUser" parameterType="com.hotel.domain.User" resultType="int" >
-    	select count(1) from USER where name=#{name} and password=#{password}
-    </select>	   
+    
+    <select id="checkUser"  parameterType="com.hotel.model.User" resultType="com.hotel.model.User">
+    	select id,username,idcard from user 
+    	where username=#{username} and password=#{password} 
+    </select>
+    
+    <delete id="deleteById" parameterType="int">
+    	delete from user where id =#{id}
+    </delete> 
+    
+    <select id="listToAdmin" resultType="com.hotel.model.User">
+    	select * from user order by id limit #{start},#{size}
+    </select>
+    <update id="updateUser" parameterType="com.hotel.model.User">
+    	update user set email=#{email},phone=#{phone} where id=#{id}
+    </update>  
  </mapper>  
