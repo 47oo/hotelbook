@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>登录</title>
-<script src="js/jquery-1.4.3.min.js"></script>
+<script src="/js/jquery-1.4.3.min.js"></script>
 <style type="text/css">
 body {
     font-family:"Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
@@ -86,7 +86,7 @@ input:focus, button:focus { outline-offset: 4px; }
         <h1>登录</h1>
         <p>请准确填写帐号密码</p>
         <label>Name <span class="small">姓名</span> </label>
-        <input type="text" name="textfield" id="name" />
+        <input type="text" name="textfield" id="username" />
         <label>Password <span class="small">密码</span> </label>
         <input type="text" name="textfield" id="password" />
         <button id="login"  type="button">登 录</button>
@@ -96,16 +96,20 @@ input:focus, button:focus { outline-offset: 4px; }
 <script>
 	$("#login").click(function(){
 		var json = {
-		        "name": $("#name").val(),
+		        "username": $("#username").val(),
 		        "password": $("#password").val(),
 		    };
 		$.ajax({
 			type:"post",
-	        url: "login.action",
+	        url: "/user/login.action",
 	        data:json,
 	        dataType: "json",
-	        success: function (message) {
-	           alert(message["code"]);
+	        success: function (data) {
+	           if(data["code"]==1){
+	        	   window.location.href="/personal.html"
+	           }else{
+	        	   alert("帐号或密码不正确！")
+	           }
 	        },
 	    });
 	});

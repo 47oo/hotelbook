@@ -16,7 +16,7 @@ namespace：必须与对应的接口全类名一致  UserMapper.java
     </insert>
     
     <select id="checkUser"  parameterType="com.hotel.model.User" resultType="com.hotel.model.User">
-    	select id,username,idcard from user 
+    	select id,username,name,email,phone from user 
     	where username=#{username} and password=#{password} 
     </select>
     

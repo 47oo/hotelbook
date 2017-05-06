@@ -14,7 +14,16 @@
 	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd  
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
 	http://www.springmodules.org/schema/ehcache http://www.springmodules.org/schema/cache/springmodules-ehcache.xsd">   
-                            
+     
+     
+     <mvc:interceptors>  
+        <mvc:interceptor>  
+            <!--设置拦截的路径-->
+            <mvc:mapping path="/user/**"/>
+            <mvc:exclude-mapping path="/user/login.action"/>   
+            <bean class="com.hotel.interceptor.AuthInterceptor"/>  
+        </mvc:interceptor>  
+    </mvc:interceptors>                        
 	<!--避免IE执行AJAX时，返回JSON出现下载文件 -->     
 	<bean id="mappingJackson2HttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 		<property name="supportedMediaTypes">
