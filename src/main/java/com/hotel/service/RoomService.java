@@ -1,6 +1,8 @@
 package com.hotel.service;
 
 import com.hotel.model.Room;
+import com.hotel.request.Request;
+import com.hotel.response.CommonDO;
 
 /**
  * @author hp
@@ -25,5 +27,7 @@ public interface RoomService {
 	 * @param room
 	 */
 	public void updateRoomStatus(Room room);
+	
+	public CommonDO emptyRoom(Request request);
 
 }

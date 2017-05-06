@@ -1,19 +1,15 @@
 package com.hotel.web.controller;
 
-import java.lang.reflect.Method;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.hotel.common.constant.Constant;
 import com.hotel.model.User;
 import com.hotel.request.Request;
+import com.hotel.service.RoomService;
 import com.hotel.service.UserService;
 
 /**
@@ -25,6 +21,10 @@ import com.hotel.service.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
+	
+	@Autowired 
+	RoomService roomService;
+	
 	@RequestMapping("/login.action")
 	@ResponseBody
 	public Object login(HttpServletRequest request,User user){
@@ -41,7 +41,7 @@ public class UserController {
 	@ResponseBody
 	public Object listEmptyRoom(Request request){
 		
-		return userService.emptyRoom(request);
+		return roomService.emptyRoom(request);
 	}
 
 }

@@ -1,6 +1,5 @@
 package com.hotel.service.Impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,13 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hotel.common.constant.Constant;
-import com.hotel.dao.RoomDAO;
 import com.hotel.dao.UserDAO;
-import com.hotel.model.Room;
 import com.hotel.model.User;
-import com.hotel.request.Request;
-import com.hotel.response.CommonDO;
-import com.hotel.response.RoomDO;
 import com.hotel.response.UserDO;
 import com.hotel.service.UserService;
 
@@ -24,9 +18,6 @@ import com.hotel.service.UserService;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDAO userDAO;
-	@Autowired
-	private RoomDAO roomDAO;
-
 	@Override
 	public UserDO checkUser(HttpServletRequest request, User user) {
 		List<User> list = userDAO.checkUser(user);
@@ -87,21 +78,4 @@ public class UserServiceImpl implements UserService {
 		ud.setPhone(u.getPhone());
 	}
 
-	@Override
-	public CommonDO emptyRoom(Request request) {
-
-		List<Room> list = roomDAO.listEmptyRoom((request.getStart() - 1) * request.getSize(), request.getSize());
-		CommonDO cd = new CommonDO();
-		List<RoomDO> dolist = new ArrayList<>();
-		RoomDO rd = null;
-		for (Room room : list) {
-			rd = new RoomDO();
-			rd.setMoney(room.getMoney());
-			rd.setType(room.getType());
-			rd.setRoom_id(room.getRoom_id());
-			dolist.add(rd);
-		}
-		cd.setData(dolist);
-		return cd;
-	}
 }

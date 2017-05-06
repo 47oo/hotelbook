@@ -5,8 +5,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.hotel.model.User;
-import com.hotel.request.Request;
-import com.hotel.response.CommonDO;
 import com.hotel.response.UserDO;
 
 /**
@@ -37,6 +35,5 @@ public interface UserService {
 
 	public UserDO getUserInfo(HttpServletRequest request);
 
-	public CommonDO emptyRoom(Request request);
 
 }
