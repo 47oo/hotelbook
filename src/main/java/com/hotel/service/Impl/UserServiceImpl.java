@@ -88,7 +88,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Object emptyRoom(Request request) {
+	public CommonDO emptyRoom(Request request) {
 
 		List<Room> list = roomDAO.listEmptyRoom((request.getStart() - 1) * request.getSize(), request.getSize());
 		CommonDO cd = new CommonDO();
@@ -98,7 +98,7 @@ public class UserServiceImpl implements UserService {
 			rd = new RoomDO();
 			rd.setMoney(room.getMoney());
 			rd.setType(room.getType());
-			rd.setRoom_id(room.getRomm_id());
+			rd.setRoom_id(room.getRoom_id());
 			dolist.add(rd);
 		}
 		cd.setData(dolist);

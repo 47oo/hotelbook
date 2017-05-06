@@ -144,3 +144,38 @@ Caused by: java.lang.ClassNotFoundException: Cannot find class: com.hotel.domain
 	at org.apache.ibatis.io.Resources.classForName(Resources.java:256)
 	at org.apache.ibatis.type.TypeAliasRegistry.resolveAlias(TypeAliasRegistry.java:113)
 	... 51 more
+[INFO] [2017-05-06 20:39:46][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [applicationContext.xml]
+  [INFO] [2017-05-06 20:39:49][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-dao.xml]
+  [INFO] [2017-05-06 20:39:49][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-db.xml]
+  [INFO] [2017-05-06 20:39:49][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-tx.xml]
+  [INFO] [2017-05-06 20:39:49][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@5d624da6: startup date [Sat May 06 20:39:49 CST 2017]; root of context hierarchy
+  [INFO] [2017-05-06 20:39:51][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-05-06 20:39:51][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-05-06 20:39:51][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@5d624da6: startup date [Sat May 06 20:39:49 CST 2017]; root of context hierarchy
+  [INFO] [2017-05-06 20:40:58][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [applicationContext.xml]
+  [INFO] [2017-05-06 20:40:58][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-dao.xml]
+  [INFO] [2017-05-06 20:40:58][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-db.xml]
+  [INFO] [2017-05-06 20:40:58][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-tx.xml]
+  [INFO] [2017-05-06 20:40:59][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@5d624da6: startup date [Sat May 06 20:40:58 CST 2017]; root of context hierarchy
+  [INFO] [2017-05-06 20:40:59][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-05-06 20:40:59][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-05-06 20:41:01][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@5d624da6: startup date [Sat May 06 20:40:58 CST 2017]; root of context hierarchy
+  [INFO] [2017-05-06 20:42:18][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [applicationContext.xml]
+  [INFO] [2017-05-06 20:42:18][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-dao.xml]
+  [INFO] [2017-05-06 20:42:18][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-db.xml]
+  [INFO] [2017-05-06 20:42:18][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-tx.xml]
+  [INFO] [2017-05-06 20:42:18][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@5d624da6: startup date [Sat May 06 20:42:18 CST 2017]; root of context hierarchy
+  [INFO] [2017-05-06 20:42:18][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-05-06 20:42:18][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-05-06 20:42:21][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+  [INFO] [2017-05-06 20:42:21][org.springframework.jdbc.support.SQLErrorCodesFactory]SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+  [INFO] [2017-05-06 20:42:21][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@5d624da6: startup date [Sat May 06 20:42:18 CST 2017]; root of context hierarchy
+  [INFO] [2017-05-06 20:43:01][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [applicationContext.xml]
+  [INFO] [2017-05-06 20:43:01][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-dao.xml]
+  [INFO] [2017-05-06 20:43:01][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-db.xml]
+  [INFO] [2017-05-06 20:43:01][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-tx.xml]
+  [INFO] [2017-05-06 20:43:01][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@5d624da6: startup date [Sat May 06 20:43:01 CST 2017]; root of context hierarchy
+  [INFO] [2017-05-06 20:43:01][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-05-06 20:43:01][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-05-06 20:43:04][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@5d624da6: startup date [Sat May 06 20:43:01 CST 2017]; root of context hierarchy
+  

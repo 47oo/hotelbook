@@ -25,6 +25,7 @@ namespace：必须与对应的接口全类名一致  UserMapper.java
     <select id ="listRoomByUser" resultType="com.hotel.model.Room">
     	select * from room where username=#{username}
     </select>
+    <!--  -1 表示未被受用  0表示已经被预定 1表示已经入住-->
     <update id ="updateRoom" parameterType="com.hotel.model.Room">
     	update room set status = #{status}
     </update>

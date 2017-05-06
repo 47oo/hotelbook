@@ -11,7 +11,7 @@ public class Room {
 	private int id;
 	private double money;
 	private String picture;
-	private int romm_id;
+	private int room_id;
 	private int status;
 	private String username;
 	private int type = 3;
@@ -43,13 +43,6 @@ public class Room {
 		this.picture = picture;
 	}
 
-	public int getRomm_id() {
-		return romm_id;
-	}
-
-	public void setRomm_id(int romm_id) {
-		this.romm_id = romm_id;
-	}
 
 	public int getStatus() {
 		return status;
@@ -73,6 +66,14 @@ public class Room {
 
 	public void setType(int type) {
 		this.type = type;
+	}
+
+	public int getRoom_id() {
+		return room_id;
+	}
+
+	public void setRoom_id(int room_id) {
+		this.room_id = room_id;
 	}
 	
 }
