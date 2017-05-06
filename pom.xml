@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.cqupt</groupId>
-	<artifactId>hotelbook</artifactId>
+	<artifactId>bookhotel</artifactId>
 	<packaging>war</packaging>
 	<version>v1.0</version>
 	<name>hotelbook Maven Webapp</name>
@@ -184,6 +184,13 @@
 			<resource>
 				<directory>src/main/resources</directory>
 			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
 		</resources>
 		<!--默认测试资源目录 -->
 		<testResources>
@@ -202,6 +209,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>hotelbook</finalName>
+		<finalName>bookhotel</finalName>
 	</build>
 </project>
