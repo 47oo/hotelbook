@@ -14,7 +14,7 @@ public class Room {
 	private int romm_id;
 	private int status;
 	private String username;
-
+	private int type = 3;
 	public Room(){
 
 	}
@@ -65,6 +65,14 @@ public class Room {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 	
 }

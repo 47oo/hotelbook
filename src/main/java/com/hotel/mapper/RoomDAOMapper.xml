@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+<!--     
+namespace：必须与对应的接口全类名一致  UserMapper.java  
+    id ：必须与对应接口的某个对应的方法名一致即必须要和UserMapper.java接口中的方法同名。  
+ -->    
+ <mapper namespace="com.hotel.dao.RoomDAO">  
+    <insert id="insertRoom" parameterType="com.hotel.model.Room">
+    	insert into room(room_id,picture,money,type)
+    	values(#{room_id},#{picture},#{money},#{type})
+    </insert>
+    
+    
+    <delete id="deleteRoom" parameterType="com.hotel.model.Room">
+    	delete from room where room_id =#{room_id}
+    </delete> 
+    
+    <select id="list" resultType="com.hotel.model.Room">
+    	select * from room limit #{start},#{size}
+    </select>
+    <select id="listEmptyRoom" resultType="com.hotel.model.Room">
+    	select * from room where status = -1 limit #{start},#{size}
+    </select>
+    <select id ="listRoomByUser" resultType="com.hotel.model.Room">
+    	select * from room where username=#{username}
+    </select>
+    <update id ="updateRoom" parameterType="com.hotel.model.Room">
+    	update room set status = #{status}
+    </update>
+ </mapper>  

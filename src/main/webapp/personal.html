@@ -56,18 +56,6 @@
 	  <div id="personal" hidden class="jumbotron"">
 	  </div>
 	  <script>
-	 /*  $("li#personal").click(function(){
-		  $("div#main").hide();
-		  $("div#personal").show();
-		  $("div#bookroom").hide();
-		  $("div#order").hide();
-		  $("div#changepwd").hide();
-		 
-		  $("li#personal").attr("class","active");
-		 var $person  = $("div#personal");
-		 $person.append("<p>test<p>");
-		 $person.append("<p>1234<p>");
-	  }); */
 		$("li#personal").click(function(){
 		var json = {};
 		$.ajax({
@@ -83,15 +71,18 @@
 	     		  $("div#order").hide();
 	     		  $("div#changepwd").hide();
 	     		 
-	     		  $("li#personal").attr("class","active");
+	     		 $("li#personal").attr("class","active");
+	     		  $("li#bookroom").attr("class","");
+	     		  $("li#order").attr("class","");
+	     		  $("li#changepwd").attr("class","");
 	     		  var $personal =$("div#personal");
 	     		  $personal.append('<table class="table table-hover">');
-	     		  $personal.append('<tr><td>姓名</td><td>'+data["data"]["name"]+'</td></tr>');
-	     		  $personal.append('<tr><td>邮箱</td><td>'+data["data"]["email"]+'</td></tr>');
-	     		  $personal.append('<tr><td>手机</td><td>'+data["data"]["phone"]+'</td></tr>');
+	     		  $personal.append('<tr><td>姓名</td><td>'+data["name"]+'</td></tr>');
+	     		  $personal.append('<tr><td>邮箱</td><td>'+data["email"]+'</td></tr>');
+	     		  $personal.append('<tr><td>手机</td><td>'+data["phone"]+'</td></tr>');
 	     		  $personal.append('</table>');
 	           }else{
-	        	   alert("error")
+	        	   alert("error");
 	           }
 	        },
 	    });
@@ -99,6 +90,41 @@
 	  </script>
 	   <div id="bookroom" class="jumbotron" hidden>
 	  </div>
+	  <script>
+		$("li#bookroom").click(function(){
+		var json = {};
+		$.ajax({
+			type:"post",
+	        url: "/user/roomlist.action",
+	        data:json,
+	        dataType: "json",
+	        success: function (data) {
+	           if(data["code"]==1){
+	        	  $("div#main").hide();
+	     		  $("div#personal").hide();
+	     		  $("div#bookroom").show();
+	     		  $("div#order").hide();
+	     		  $("div#changepwd").hide();
+	     		 
+	     		  $("li#personal").attr("class","");
+	     		  $("li#bookroom").attr("class","active");
+	     		  $("li#order").attr("class","");
+	     		  $("li#changepwd").attr("class","");
+	     		  var $personal =$("div#bookroom");
+	     		  $personal.append('<table class="table table-hover">');
+	     		  $personal.append('<tr><td>客房号</td><td>类型</td><td>价格</td><td>操作</td></tr>');
+	     		  var $rooms= data['data'];
+	     		 	$.each($rooms, function(index, room){ 
+	     		 		 $personal.append('<tr><td>'+rooms["room_id"]+'</td><td>'+rooms["type"]+'</td><td>'+rooms["money"]+'</td></tr>');
+	     			});
+	     		  $personal.append('</table>');
+	           }else{
+	        	   alert("error");
+	           }
+	        },
+	    });
+	});
+	  </script>
 	   <div id="order" class="jumbotron" hidden>
 	  </div>
 	   <div id="changepwd" class="jumbotron" hidden>

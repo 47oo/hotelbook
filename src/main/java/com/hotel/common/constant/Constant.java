@@ -5,4 +5,11 @@ public interface Constant {
 		int WRONG_CODE = 0;
 		int RIGHT_CODE = 1;
 	}
+	public interface Room {
+		int WRONG_CODE = 0;
+		int RIGHT_CODE = 1;
+		int BIG_ROOM = 1;
+		int MID_ROOM = 2;
+		int SMALL_ROOM = 3;
+	}
 }
