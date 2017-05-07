@@ -29,4 +29,12 @@ namespace：必须与对应的接口全类名一致  UserMapper.java
     <update id ="updateRoom" parameterType="com.hotel.model.Room">
     	update room set status = #{status}
     </update>
+
+    <update id ="updateRoomStatus">
+        update room set status=#{status},username=#{username} where room_id = #{room_id}
+    </update>
+
+    <select id="roomStatus" resultType="int">
+        select status from room where room_id=#{room_id}
+    </select>
  </mapper>  

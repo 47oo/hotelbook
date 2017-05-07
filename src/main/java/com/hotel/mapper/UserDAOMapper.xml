@@ -29,5 +29,7 @@ namespace：必须与对应的接口全类名一致  UserMapper.java
     </select>
     <update id="updateUser" parameterType="com.hotel.model.User">
     	update user set email=#{email},phone=#{phone} where id=#{id}
-    </update>  
+    </update>
+
+
  </mapper>  

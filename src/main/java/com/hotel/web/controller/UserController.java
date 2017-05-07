@@ -2,6 +2,7 @@ package com.hotel.web.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.hotel.request.RoomQueryRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +43,12 @@ public class UserController {
 	public Object listEmptyRoom(Request request){
 		
 		return roomService.emptyRoom(request);
+	}
+
+	@RequestMapping(value ="/bookroom.action")
+	@ResponseBody
+	public Object bookRoom(RoomQueryRequest roomQueryRequest,HttpServletRequest request){
+		return roomService.bookRoom(roomQueryRequest,request);
 	}
 
 }

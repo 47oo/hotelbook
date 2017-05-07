@@ -3,6 +3,9 @@ package com.hotel.service.Impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hotel.common.constant.Constant;
+import com.hotel.model.User;
+import com.hotel.request.RoomQueryRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +16,9 @@ import com.hotel.request.Request;
 import com.hotel.response.CommonDO;
 import com.hotel.response.RoomDO;
 import com.hotel.service.RoomService;
+
+import javax.servlet.http.HttpServletRequest;
+
 @Transactional
 @Service
 public class RoomServiceImpl implements RoomService {
@@ -49,6 +55,18 @@ public class RoomServiceImpl implements RoomService {
 		}
 		cd.setData(dolist);
 		return cd;
+	}
+
+	@Override
+	public synchronized CommonDO bookRoom(RoomQueryRequest roomQueryRequest, HttpServletRequest request) {
+		CommonDO commonDO = new CommonDO();
+		User u = (User)request.getSession().getAttribute("user");
+		if(roomDAO.roomStatus(roomQueryRequest.getRoom_id())==Constant.Room.UNBOOK){
+			roomDAO.updateRoomStatus(Constant.Room.BOOKING,u.getUsername(),roomQueryRequest.getRoom_id());
+		}else{
+			commonDO.setCode(Constant.Room.WRONG_CODE);
+		}
+		return commonDO;
 	}
 
 }

@@ -2,7 +2,10 @@ package com.hotel.service;
 
 import com.hotel.model.Room;
 import com.hotel.request.Request;
+import com.hotel.request.RoomQueryRequest;
 import com.hotel.response.CommonDO;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author hp
@@ -10,24 +13,22 @@ import com.hotel.response.CommonDO;
  */
 public interface RoomService {
 
-	/**
-	 * 
-	 * @param room
-	 */
-	public void addRoom(Room room);
+    /**
+     * @param room
+     */
+    void addRoom(Room room);
 
-	/**
-	 * 
-	 * @param room
-	 */
-	public void deleteRoom(Room room);
+    /**
+     * @param room
+     */
+    void deleteRoom(Room room);
 
-	/**
-	 * 
-	 * @param room
-	 */
-	public void updateRoomStatus(Room room);
-	
-	public CommonDO emptyRoom(Request request);
+    /**
+     * @param room
+     */
+    void updateRoomStatus(Room room);
 
+    CommonDO emptyRoom(Request request);
+
+    CommonDO bookRoom(RoomQueryRequest roomQueryRequest, HttpServletRequest request);
 }

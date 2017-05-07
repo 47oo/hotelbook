@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,134 +11,160 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-    <!-- Static navbar -->
-    <nav class="navbar navbar-default navbar-static-top">
-      <div class="container">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!-- Static navbar -->
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">个人中心</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">个人中心</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li id="personal"><a>个人信息</a></li>
-            <li id="bookroom"><a>客房预定</a></li>
-            <li id="order"><a>订单查询</a></li>
-			<li id="changepwd"><a>修改密码</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/index.html">退出</a></li>
-          </ul>
+            <ul class="nav navbar-nav">
+                <li id="personal"><a>个人信息</a></li>
+                <li id="bookroom"><a>客房预定</a></li>
+                <li id="order"><a>订单查询</a></li>
+                <li id="changepwd"><a>修改密码</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/index.html">退出</a></li>
+            </ul>
         </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+    </div>
+</nav>
 
 
-    <div class="container">
+<div class="container">
 
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron" id="main">
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron" id="main">
         <h1>欢迎来到有家酒店</h1>
         <p>我们将提供最真诚的服务</p>
         <p>电话：8888-8888-8888</p>
         <p>
-          <a class="btn btn-lg btn-primary" role="button">欢迎 &raquo;</a>
+            <a class="btn btn-lg btn-primary" role="button">欢迎 &raquo;</a>
         </p>
-      </div>
-	  <div id="personal" hidden class="jumbotron"">
-	  	<table id="personal" class="table table-hover">
-	  	</table>
-	  </div>
-	  <script>
-		$("li#personal").click(function(){
-		var json = {};
-		$.ajax({
-			type:"post",
-	        url: "/user/personal.action",
-	        data:json,
-	        dataType: "json",
-	        success: function (data) {
-	           if(data["code"]==1){
-	        	  $("div#main").hide();
-	     		  $("div#personal").show();
-	     		  $("div#bookroom").hide();
-	     		  $("div#order").hide();
-	     		  $("div#changepwd").hide();
-	     		 
-	     		 $("li#personal").attr("class","active");
-	     		  $("li#bookroom").attr("class","");
-	     		  $("li#order").attr("class","");
-	     		  $("li#changepwd").attr("class","");
-	     		  var $table =$("table#personal");
-	     		 	$table.empty();
-	     		  $table.append('<tr><td>姓名</td><td>'+data["name"]+'</td></tr>');
-	     		  $table.append('<tr><td>邮箱</td><td>'+data["email"]+'</td></tr>');
-	     		  $table.append('<tr><td>手机</td><td>'+data["phone"]+'</td></tr>');
-	     		 
-	           }else{
-	        	   alert("error");
-	           }
-	        },
-	    });
-	});
-	  </script>
-	   <div id="bookroom" class="jumbotron" hidden>
-	   		<table id="bookroom" class="table table-hover">
-	   		</table>
-	  </div>
-	  <script>
-		$("li#bookroom").click(function(){
-		var json = {};
-		$.ajax({
-			type:"post",
-	        url: "/user/roomlist.action",
-	        data:json,
-	        dataType: "json",
-	        success: function (data) {
-	           if(data["code"]==1){
-	        	  $("div#main").hide();
-	     		  $("div#personal").hide();
-	     		  $("div#bookroom").show();
-	     		  $("div#order").hide();
-	     		  $("div#changepwd").hide();
-	     		 
-	     		  $("li#personal").attr("class","");
-	     		  $("li#bookroom").attr("class","active");
-	     		  $("li#order").attr("class","");
-	     		  $("li#changepwd").attr("class","");
-	     		  var $table =$("table#bookroom");
-	     		  $table.empty();
-	     		  $table.append('<tr><td>客房号</td><td>类型</td><td>价格</td><td>操作</td></tr>');
-	     		  var $rooms= data["data"];
-	     		 	$.each($rooms, function(index, room){ 
-	     		 		 $table.append('<tr><td>'+room["room_id"]+'</td><td>'+room["type"]+'</td><td>'+room["money"]+'</td></tr>');
-	     			});
-	           }else{
-	        	   alert("error");
-	           }
-	        },
-	    });
-	});
-	  </script>
-	   <div id="order" class="jumbotron" hidden>
-	  </div>
-	   <div id="changepwd" class="jumbotron" hidden>
-	  </div>
-    </div> <!-- /container -->
+    </div>
+    <div id="personal" hidden class="jumbotron">
+        <table id="personal" class="table table-hover">
+        </table>
+    </div>
+    <script>
+        $("li#personal").click(function () {
+            var json = {};
+            $.ajax({
+                type: "post",
+                url: "/user/personal.action",
+                data: json,
+                dataType: "json",
+                success: function (data) {
+                    if (data["code"] == 1) {
+                        $("div#main").hide();
+                        $("div#personal").show();
+                        $("div#bookroom").hide();
+                        $("div#order").hide();
+                        $("div#changepwd").hide();
+
+                        $("li#personal").attr("class", "active");
+                        $("li#bookroom").attr("class", "");
+                        $("li#order").attr("class", "");
+                        $("li#changepwd").attr("class", "");
+                        var $table = $("table#personal");
+                        $table.empty();
+                        $table.append('<tr><td>姓名</td><td>' + data["name"] + '</td></tr>');
+                        $table.append('<tr><td>邮箱</td><td>' + data["email"] + '</td></tr>');
+                        $table.append('<tr><td>手机</td><td>' + data["phone"] + '</td></tr>');
+
+                    } else {
+                        alert("error");
+                    }
+                }
+            });
+        });
+    </script>
+    <div id="bookroom" class="jumbotron" hidden>
+        <table id="bookroom" class="table table-hover">
+        </table>
+    </div>
+    <script>
+        var roomlist = function () {
+            var json = {};
+            $.ajax({
+                type: "post",
+                url: "/user/roomlist.action",
+                data: json,
+                dataType: "json",
+                success: function (data) {
+                    if (data["code"] == 1) {
+                        $("div#main").hide();
+                        $("div#personal").hide();
+                        $("div#bookroom").show();
+                        $("div#order").hide();
+                        $("div#changepwd").hide();
+
+                        $("li#personal").attr("class", "");
+                        $("li#bookroom").attr("class", "active");
+                        $("li#order").attr("class", "");
+                        $("li#changepwd").attr("class", "");
+                        var $table = $("table#bookroom");
+                        $table.empty();
+                        $table.append('<tr><td>客房号</td><td>类型</td><td>价格</td><td>操作</td></tr>');
+                        var $rooms = data["data"];
+                        $.each($rooms, function (index, room) {
+                            $table.append('<tr><td>' + room["room_id"] + '</td><td>' + room["type"] + '</td><td>' + room["money"] + '</td><td>' + '<span id ="' + room["room_id"] + '" onclick="book(this)" class="glyphicon glyphicon-plus" title="预订"></span>' +
+                                '</td></tr>'
+                            )
+                            ;
+                        });
+                    } else {
+                        alert("error");
+                    }
+                }
+            });
+        }
+        $("li#bookroom").click(function () {
+            roomlist();
+        });
+        var book = function (e) {
+            var room_id = $(e).attr("id");
+            var json = {room_id: room_id};
+            $.ajax({
+                type: "post",
+                url: "/user/bookroom.action",
+                data: json,
+                dataType: "json",
+                success: function (data) {
+                    if (data["code"] == 1) {
+                        alert("预定成功");
+                        roomlist();
+                    } else {
+                        alert("预定失败");
+                        roomlist();
+                    }
+                }
+            });
+        }
+    </script>
+    <div id="order" class="jumbotron" hidden>
+    </div>
+    <div id="changepwd" class="jumbotron" hidden>
+    </div>
+</div> <!-- /container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-   
-   
-  </body>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+
+</body>
 </html>

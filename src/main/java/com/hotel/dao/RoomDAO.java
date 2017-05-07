@@ -12,32 +12,31 @@ import com.hotel.model.Room;
  */
 public interface RoomDAO {
 
-	/**
-	 * 
-	 * @param room
-	 */
-	public void deleteRoom(Room room);
+    /**
+     * @param room
+     */
+    void deleteRoom(Room room);
 
-	/**
-	 * 
-	 * @param room
-	 */
-	public void insertRoom(Room room);
+    /**
+     * @param room
+     */
+    void insertRoom(Room room);
 
-	public List<Room> list(@Param("start")int start,@Param("size") int size);
+    List<Room> list(@Param("start") int start, @Param("size") int size);
 
-	public List<Room> listEmptyRoom(@Param("start")int start,@Param("size") int size);
+    List<Room> listEmptyRoom(@Param("start") int start, @Param("size") int size);
 
-	/**
-	 * 
-	 * @param username
-	 */
-	public int listRoomByUser(String username);
+    /**
+     * @param username
+     */
+    int listRoomByUser(String username);
 
-	/**
-	 * 
-	 * @param room
-	 */
-	public void updateRoom(Room room);
+    /**
+     * @param room
+     */
+    void updateRoom(Room room);
 
+    void updateRoomStatus(@Param("status") int status, @Param("username") String username,@Param("room_id") int room_id);
+
+    int roomStatus(@Param("room_id") int room_id);
 }
