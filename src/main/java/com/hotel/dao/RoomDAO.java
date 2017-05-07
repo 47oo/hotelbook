@@ -38,5 +38,5 @@ public interface RoomDAO {
 
     void updateRoomStatus(@Param("status") int status, @Param("username") String username,@Param("room_id") int room_id);
 
-    int roomStatus(@Param("room_id") int room_id);
+    List<Room> roomStatus(@Param("room_id") int room_id);
 }

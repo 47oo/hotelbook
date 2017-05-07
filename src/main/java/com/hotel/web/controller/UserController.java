@@ -2,7 +2,10 @@ package com.hotel.web.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.hotel.common.constant.Constant;
 import com.hotel.request.RoomQueryRequest;
+import com.hotel.response.CommonDO;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +22,7 @@ import com.hotel.service.UserService;
  */
 @Controller
 @RequestMapping("/user")
+@Log4j
 public class UserController {
 	@Autowired
 	private UserService userService;
@@ -48,7 +52,15 @@ public class UserController {
 	@RequestMapping(value ="/bookroom.action")
 	@ResponseBody
 	public Object bookRoom(RoomQueryRequest roomQueryRequest,HttpServletRequest request){
-		return roomService.bookRoom(roomQueryRequest,request);
+		CommonDO co = null;
+		try{
+			co = roomService.bookRoom(roomQueryRequest,request);
+		}catch(Exception e){
+			co = new CommonDO();
+			co.setCode(Constant.Room.WRONG_CODE);
+			log.debug(e);
+		}
+		return co;
 	}
 
 }

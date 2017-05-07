@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>  
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">    
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--     
 namespace：必须与对应的接口全类名一致  UserMapper.java  
     id ：必须与对应接口的某个对应的方法名一致即必须要和UserMapper.java接口中的方法同名。  
- -->    
- <mapper namespace="com.hotel.dao.UserDAO">  
+ -->
+<mapper namespace="com.hotel.dao.UserDAO">
     <insert id="insertUser" parameterType="com.hotel.model.User">
     	insert into user(
     		username,password,email,phone,idcard,name
@@ -14,16 +14,16 @@ namespace：必须与对应的接口全类名一致  UserMapper.java
     		#{username},#{password},#{email},#{phone},#{idcard},#{name}
     	)
     </insert>
-    
-    <select id="checkUser"  parameterType="com.hotel.model.User" resultType="com.hotel.model.User">
-    	select id,username,name,email,phone from user 
+
+    <select id="checkUser" parameterType="com.hotel.model.User" resultType="com.hotel.model.User">
+    	select id,username,name,email,phone,idcard from user
     	where username=#{username} and password=#{password} 
     </select>
-    
+
     <delete id="deleteById" parameterType="int">
     	delete from user where id =#{id}
-    </delete> 
-    
+    </delete>
+
     <select id="listToAdmin" resultType="com.hotel.model.User">
     	select * from user order by id limit #{start},#{size}
     </select>
@@ -32,4 +32,4 @@ namespace：必须与对应的接口全类名一致  UserMapper.java
     </update>
 
 
- </mapper>  
+</mapper>

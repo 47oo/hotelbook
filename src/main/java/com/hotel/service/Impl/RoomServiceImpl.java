@@ -3,9 +3,15 @@ package com.hotel.service.Impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hotel.common.CommonUtils;
+import com.hotel.common.TimeUtils;
 import com.hotel.common.constant.Constant;
+import com.hotel.dao.OrderDAO;
+import com.hotel.exception.TimeNullException;
+import com.hotel.model.Order;
 import com.hotel.model.User;
 import com.hotel.request.RoomQueryRequest;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,10 +27,13 @@ import javax.servlet.http.HttpServletRequest;
 
 @Transactional
 @Service
+@Log4j
 public class RoomServiceImpl implements RoomService {
 	
 	@Autowired
 	private RoomDAO roomDAO;
+	@Autowired
+	private OrderDAO orderDAO;
 	@Override
 	public void addRoom(Room room) {
 
@@ -61,12 +70,34 @@ public class RoomServiceImpl implements RoomService {
 	public synchronized CommonDO bookRoom(RoomQueryRequest roomQueryRequest, HttpServletRequest request) {
 		CommonDO commonDO = new CommonDO();
 		User u = (User)request.getSession().getAttribute("user");
-		if(roomDAO.roomStatus(roomQueryRequest.getRoom_id())==Constant.Room.UNBOOK){
+		Room room = roomDAO.roomStatus(roomQueryRequest.getRoom_id()).get(0);
+		if(room.getStatus()==Constant.Room.UNBOOK){
 			roomDAO.updateRoomStatus(Constant.Room.BOOKING,u.getUsername(),roomQueryRequest.getRoom_id());
+			Order order = new Order();
+			order.setOrder_id(CommonUtils.randomOrderId(u.getIdcard()));
+			order.setCtime(TimeUtils.now());
+			order.setMoney(room.getMoney());
+			order.setRoom_id(room.getRoom_id());
+			order.setUsername(u.getUsername());
+			long citime = judgeTime(roomQueryRequest.getCitime());
+			order.setCtime(citime);
+			long cotime = judgeTime(roomQueryRequest.getCotime());
+			order.setCotime(cotime);
+			orderDAO.insertOrder(order);
 		}else{
 			commonDO.setCode(Constant.Room.WRONG_CODE);
 		}
 		return commonDO;
 	}
+
+	private long judgeTime(String time) {
+		Long sp =TimeUtils.getTimeStamp(time,"yyyy-MM-dd");
+		if(sp==null){
+			log.debug(time+" is wrong");
+			throw new TimeNullException();
+		}
+		return sp;
+	}
+
 
 }

@@ -11,6 +11,7 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -92,6 +93,13 @@
         });
     </script>
     <div id="bookroom" class="jumbotron" hidden>
+        <div class="control-group">
+            <label class="control-label">CiTime</label>
+            <input size="16" type="text" id="datetimeStart" data-date-format="yyyy MM dd" readonly class="form_datetime">
+
+            <label class="control-label">CoTime</label>
+            <input size="16" type="text" id="datetimeEnd" data-date-format="yyyy MM dd" readonly class="form_datetime">
+        </div>
         <table id="bookroom" class="table table-hover">
         </table>
     </div>
@@ -136,7 +144,11 @@
         });
         var book = function (e) {
             var room_id = $(e).attr("id");
-            var json = {room_id: room_id};
+            var citime = $('#datetimeStart').val();
+            var cotime = $('#datetimeEnd').val();
+            var json = {room_id: room_id,
+                    citime:citime,
+                    cotime:cotime};
             $.ajax({
                 type: "post",
                 url: "/user/bookroom.action",
@@ -160,11 +172,33 @@
     </div>
 </div> <!-- /container -->
 
-
+<script type="text/javascript" src="/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-
+<script type="text/javascript">
+    $("#datetimeStart").datetimepicker({
+        format: 'yyyy-mm-dd',
+        minView: 2,
+        language: 'zh-CN',
+        autoclose: true,
+        startDate: new Date(),
+        forceParse: 0
+    }).on("click", function () {
+        $("#datetimeStart").datetimepicker("setEndDate", $("#datetimeEnd").val())
+    });
+    $("#datetimeEnd").datetimepicker({
+        format: 'yyyy-mm-dd',
+        minView: 2,
+        language: 'zh-CN',
+        autoclose: true,
+        startDate: new Date(),
+        forceParse: 0
+    }).on("click", function () {
+        $("#datetimeEnd").datetimepicker("setStartDate", $("#datetimeStart").val())
+    });
+</script>
 
 </body>
 </html>
