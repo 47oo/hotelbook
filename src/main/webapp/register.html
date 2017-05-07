@@ -16,7 +16,7 @@
                 <input id=name name=name type=text placeholder="请输入用户名" required autofocus>
             </li>
             <li>
-                <label for=pwd>密码:</label>
+                <label for=password>密码:</label>
                 <input id=password name=password type=password placeholder="请设置密码" required>
             </li>
             <li>
@@ -29,11 +29,15 @@
             </li>
             <li>
                 <label for=realname>真实姓名:</label>
-                <input id=realname name=realname type=text placeholder="身份证信息" required>
+                <input id=realname name=realname type=text placeholder="真实姓名" required>
             </li>
 			<li>
                 <label for=idcard>身份证:</label>
                 <input id=idcard name=idcard type=text placeholder="身份证信息" required>
+            </li>
+            <li>
+                <label for=phone>邮箱:</label>
+                <input id=email name=email type=text placeholder="邮箱地址" required>
             </li>
         </ol>
     </fieldset>
@@ -44,19 +48,25 @@
 <script>
 	$("#register").click(function(){
 		var json = {
-		        "name": $("#name").val(),
+		        "username": $("#name").val(),
 		        "password": $("#password").val(),
 		        "phone": $("#phone").val(),
-		        "realname": $("#realname").val(),
-		        "idcard": $("#idcard").val()
+		        "name": $("#realname").val(),
+		        "idcard": $("#idcard").val(),
+                "email":$("#email").val()
 		    };
 		$.ajax({
 			type:"post",
-	        url: "register.action",
+	        url: "/user/register.action",
 	        data:json,
 	        dataType: "json",
-	        success: function (message) {
-	           alert(message["code"]);
+	        success: function (data) {
+	          if(data['code']==1){
+	              alert("注册成功");
+	              window.location.href="/login.html";
+              }else{
+	              alert("帐号已存在");
+              }
 	        },
 	    });
 	});

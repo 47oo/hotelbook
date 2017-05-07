@@ -28,7 +28,7 @@ public class UserController {
 	private UserService userService;
 	
 	@Autowired 
-	RoomService roomService;
+	private  RoomService roomService;
 	
 	@RequestMapping("/login.action")
 	@ResponseBody
@@ -61,6 +61,11 @@ public class UserController {
 			log.debug(e);
 		}
 		return co;
+	}
+	@RequestMapping(value ="/register.action")
+	@ResponseBody
+	public Object register(User user){
+		return userService.register(user);
 	}
 
 }

@@ -92,6 +92,7 @@
             });
         });
     </script>
+
     <div id="bookroom" class="jumbotron" hidden>
         <div class="control-group">
             <label class="control-label">CiTime</label>
@@ -130,8 +131,7 @@
                         $.each($rooms, function (index, room) {
                             $table.append('<tr><td>' + room["room_id"] + '</td><td>' + room["type"] + '</td><td>' + room["money"] + '</td><td>' + '<span id ="' + room["room_id"] + '" onclick="book(this)" class="glyphicon glyphicon-plus" title="预订"></span>' +
                                 '</td></tr>'
-                            )
-                            ;
+                            );
                         });
                     } else {
                         alert("error");
@@ -167,7 +167,41 @@
         }
     </script>
     <div id="order" class="jumbotron" hidden>
+        <table id="order" class="table table-hover">
+        </table>
     </div>
+    <script>
+        $("li#order").click(function () {
+            var json = {};
+            $.ajax({
+                type: "post",
+                url: "/user/order.action",
+                data: json,
+                dataType: "json",
+                success: function (data) {
+                    if (data["code"] == 1) {
+                        $("div#main").hide();
+                        $("div#personal").hide();
+                        $("div#bookroom").hide();
+                        $("div#order").show();
+                        $("div#changepwd").hide();
+
+                        $("li#personal").attr("class", "");
+                        $("li#bookroom").attr("class", "");
+                        $("li#order").attr("class", "active");
+                        $("li#changepwd").attr("class", "");
+                        var $table = $("table#order");
+                        $table.empty();
+                        $table.append('<tr><td>订单号</td><td>房间号</td><td>入住时间</td><td>结束时间</td><td>消费金额</td></tr>');
+
+
+                    } else {
+                        alert("error");
+                    }
+                }
+            });
+        });
+    </script>
     <div id="changepwd" class="jumbotron" hidden>
     </div>
 </div> <!-- /container -->

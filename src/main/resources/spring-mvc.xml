@@ -20,7 +20,8 @@
         <mvc:interceptor>  
             <!--设置拦截的路径-->
             <mvc:mapping path="/user/**"/>
-            <mvc:exclude-mapping path="/user/login.action"/>   
+            <mvc:exclude-mapping path="/user/login.action"/>
+			<mvc:exclude-mapping path="/user/register.action"/>
             <bean class="com.hotel.interceptor.AuthInterceptor"/>  
         </mvc:interceptor>  
     </mvc:interceptors>                        

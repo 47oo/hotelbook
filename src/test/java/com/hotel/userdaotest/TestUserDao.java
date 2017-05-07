@@ -1,5 +1,6 @@
 package com.hotel.userdaotest;
 
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
@@ -22,7 +23,7 @@ public class TestUserDao extends BaseJUnit{
 //		u.setName("1234");
 //		u.setPassword("1234");
 //		iu.checkUser(u);
-//		MessageDigest mdInst = MessageDigest.getInstance("MD5");
+		MessageDigest mdInst = MessageDigest.getInstance("MD5");
 //
 //		System.out.println(Hex.encodeHex(mdInst.digest("1234".getBytes())));
 		

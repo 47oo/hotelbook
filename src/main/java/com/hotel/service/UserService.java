@@ -13,27 +13,26 @@ import com.hotel.response.UserDO;
  */
 public interface UserService {
 
-	/**
-	 * 
-	 * @param user
-	 */
-	public UserDO checkUser(HttpServletRequest request,User user);
+    /**
+     * @param user
+     */
+    UserDO checkUser(HttpServletRequest request, User user);
 
-	public void deleteUser();
+    void deleteUser();
 
-	public List<User> getUserByIdCard();
+    List<User> getUserByIdCard();
 
-	public List<User> getUserByUsername();
+    List<User> getUserByUsername();
 
-	public List<User> listUsertoAdmin();
+    List<User> listUsertoAdmin();
 
-	/**
-	 * 
-	 * @param user
-	 */
-	public void updateUser(User user);
+    /**
+     * @param user
+     */
+    void updateUser(User user);
 
-	public UserDO getUserInfo(HttpServletRequest request);
+    UserDO getUserInfo(HttpServletRequest request);
 
 
+    UserDO register(User user);
 }
