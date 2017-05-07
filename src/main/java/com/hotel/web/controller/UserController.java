@@ -24,48 +24,27 @@ import com.hotel.service.UserService;
 @RequestMapping("/user")
 @Log4j
 public class UserController {
-	@Autowired
-	private UserService userService;
-	
-	@Autowired 
-	private  RoomService roomService;
-	
-	@RequestMapping("/login.action")
-	@ResponseBody
-	public Object login(HttpServletRequest request,User user){
-		return userService.checkUser(request,user);
-	}
-	@RequestMapping("/personal.action")
-	@ResponseBody
-	public Object userInfo(HttpServletRequest request){
-		
-		return userService.getUserInfo(request);
-	}
-	
-	@RequestMapping(value ="/roomlist.action")
-	@ResponseBody
-	public Object listEmptyRoom(Request request){
-		
-		return roomService.emptyRoom(request);
-	}
+    @Autowired
+    private UserService userService;
 
-	@RequestMapping(value ="/bookroom.action")
-	@ResponseBody
-	public Object bookRoom(RoomQueryRequest roomQueryRequest,HttpServletRequest request){
-		CommonDO co = null;
-		try{
-			co = roomService.bookRoom(roomQueryRequest,request);
-		}catch(Exception e){
-			co = new CommonDO();
-			co.setCode(Constant.Room.WRONG_CODE);
-			log.debug(e);
-		}
-		return co;
-	}
-	@RequestMapping(value ="/register.action")
-	@ResponseBody
-	public Object register(User user){
-		return userService.register(user);
-	}
+    @RequestMapping("/login.action")
+    @ResponseBody
+    public Object login(HttpServletRequest request, User user) {
+        return userService.checkUser(request, user);
+    }
+
+    @RequestMapping("/personal.action")
+    @ResponseBody
+    public Object userInfo(HttpServletRequest request) {
+
+        return userService.getUserInfo(request);
+    }
+
+
+    @RequestMapping(value = "/register.action")
+    @ResponseBody
+    public Object register(User user) {
+        return userService.register(user);
+    }
 
 }

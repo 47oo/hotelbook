@@ -76,13 +76,13 @@ public class RoomServiceImpl implements RoomService {
 			Order order = new Order();
 			order.setOrder_id(CommonUtils.randomOrderId(u.getIdcard()));
 			order.setCtime(TimeUtils.now());
-			order.setMoney(room.getMoney());
-			order.setRoom_id(room.getRoom_id());
-			order.setUsername(u.getUsername());
 			long citime = judgeTime(roomQueryRequest.getCitime());
 			order.setCtime(citime);
 			long cotime = judgeTime(roomQueryRequest.getCotime());
 			order.setCotime(cotime);
+			order.setMoney(room.getMoney()*TimeUtils.days(citime,cotime));
+			order.setRoom_id(room.getRoom_id());
+			order.setUsername(u.getUsername());
 			orderDAO.insertOrder(order);
 		}else{
 			commonDO.setCode(Constant.Room.WRONG_CODE);

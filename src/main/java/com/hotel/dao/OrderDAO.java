@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.hotel.model.Order;
 import com.hotel.model.User;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @author hp
@@ -22,7 +23,7 @@ public interface OrderDAO {
 	 * @param start
 	 * @param size
 	 */
-	public List<Order> listToAdmin(int start, int size);
+	public List<Order> listToAdmin(@Param("start") int start, @Param("size") int size);
 
 	/**
 	 * 
@@ -30,6 +31,6 @@ public interface OrderDAO {
 	 * @param start
 	 * @param size
 	 */
-	public List<Order> listToUser(User user, int start, int size);
+	public List<Order> listToUser(@Param("username") String username, @Param("start") int start, @Param("size") int size);
 
 }

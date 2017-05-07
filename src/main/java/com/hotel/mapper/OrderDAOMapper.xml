@@ -14,4 +14,7 @@ namespace：必须与对应的接口全类名一致  UserMapper.java
         )
     </insert>
 
+    <select id="listToUser" resultType="com.hotel.model.Order">
+      select * from order_t where username=#{username} limit #{start},#{size}
+    </select>
  </mapper>  

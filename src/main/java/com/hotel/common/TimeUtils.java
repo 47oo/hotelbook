@@ -12,6 +12,7 @@ import java.util.Date;
 @Log4j
 public class TimeUtils {
 
+    private static final long ONE_DAY = 24 * 60 * 60 * 1000;
     //获得当前时间
     public static long now() {
         return System.currentTimeMillis();
@@ -34,4 +35,8 @@ public class TimeUtils {
         return null;
     }
 
+    public static int days(long begin,long end){
+
+        return (end-begin)/ONE_DAY ==0?1: (int)Math.ceil ((end - begin) / ONE_DAY);
+    }
 }

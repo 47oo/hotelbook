@@ -96,7 +96,8 @@
     <div id="bookroom" class="jumbotron" hidden>
         <div class="control-group">
             <label class="control-label">CiTime</label>
-            <input size="16" type="text" id="datetimeStart" data-date-format="yyyy MM dd" readonly class="form_datetime">
+            <input size="16" type="text" id="datetimeStart" data-date-format="yyyy MM dd" readonly
+                   class="form_datetime">
 
             <label class="control-label">CoTime</label>
             <input size="16" type="text" id="datetimeEnd" data-date-format="yyyy MM dd" readonly class="form_datetime">
@@ -109,7 +110,7 @@
             var json = {};
             $.ajax({
                 type: "post",
-                url: "/user/roomlist.action",
+                url: "/room/roomlist.action",
                 data: json,
                 dataType: "json",
                 success: function (data) {
@@ -146,12 +147,14 @@
             var room_id = $(e).attr("id");
             var citime = $('#datetimeStart').val();
             var cotime = $('#datetimeEnd').val();
-            var json = {room_id: room_id,
-                    citime:citime,
-                    cotime:cotime};
+            var json = {
+                room_id: room_id,
+                citime: citime,
+                cotime: cotime
+            };
             $.ajax({
                 type: "post",
-                url: "/user/bookroom.action",
+                url: "/room/bookroom.action",
                 data: json,
                 dataType: "json",
                 success: function (data) {
@@ -175,7 +178,7 @@
             var json = {};
             $.ajax({
                 type: "post",
-                url: "/user/order.action",
+                url: "/order/orderlist.action",
                 data: json,
                 dataType: "json",
                 success: function (data) {
@@ -191,9 +194,12 @@
                         $("li#order").attr("class", "active");
                         $("li#changepwd").attr("class", "");
                         var $table = $("table#order");
+                        var $orders = data["data"];
                         $table.empty();
                         $table.append('<tr><td>订单号</td><td>房间号</td><td>入住时间</td><td>结束时间</td><td>消费金额</td></tr>');
-
+                        $.each($orders, function (index, order) {
+                            $table.append('<tr><td>' + order["order_id"] + '</td><td>' + order["room_id"] + '</td><td>' + order["citime"] + '</td><td>' + order["cotime"] + '</td><td>' + order['money'] + '</td></tr>');
+                        });
 
                     } else {
                         alert("error");

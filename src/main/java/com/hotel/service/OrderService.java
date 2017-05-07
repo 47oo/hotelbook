@@ -3,6 +3,10 @@ package com.hotel.service;
 import java.util.List;
 
 import com.hotel.model.Order;
+import com.hotel.request.OrderQueryRequest;
+import com.hotel.response.CommonDO;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author hp
@@ -18,11 +22,6 @@ public interface OrderService {
 	 */
 	public List<Order> listToAdmin(int start, int size);
 
-	/**
-	 * 
-	 * @param start
-	 * @param size
-	 */
-	public List<Order> listToUser(int start, int size);
+	public CommonDO listToUser(OrderQueryRequest orderQueryRequest, HttpServletRequest request);
 
 }
