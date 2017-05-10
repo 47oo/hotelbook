@@ -16,4 +16,8 @@ public interface Constant {
         int UNBOOK = -1; //未预定
         int BOOKED = 1;// 入住
     }
+    interface Admin{
+        int WRONG_CODE = 0;
+        int RIGHT_CODE = 1;
+    }
 }

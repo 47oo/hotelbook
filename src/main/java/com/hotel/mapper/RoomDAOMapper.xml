@@ -19,11 +19,11 @@ namespace：必须与对应的接口全类名一致  UserMapper.java
     <select id="list" resultType="com.hotel.model.Room">
     	select * from room limit #{start},#{size}
     </select>
-    <select id="listEmptyRoom" resultType="com.hotel.model.Room">
-    	select * from room where status = -1 limit #{start},#{size}
+    <select id="listByStatus" resultType="com.hotel.model.Room">
+    	select * from room where status = #{status} limit #{start},#{size}
     </select>
     <select id ="listRoomByUser" resultType="com.hotel.model.Room">
-    	select * from room where username=#{username}
+    	select * from room where username=#{username} and status in(0,1)
     </select>
     <!--  -1 表示未被受用  0表示已经被预定 1表示已经入住-->
     <update id ="updateRoom" parameterType="com.hotel.model.Room">
@@ -31,7 +31,7 @@ namespace：必须与对应的接口全类名一致  UserMapper.java
     </update>
 
     <update id ="updateRoomStatus">
-        update room set status=#{status},username=#{username} where room_id = #{room_id}
+        update room set status=#{status},idcard=#{idcard},username=#{username} where room_id = #{room_id}
     </update>
 
     <select id="roomStatus" resultType="com.hotel.model.Room">

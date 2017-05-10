@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.hotel.common.MD5Utils;
+import com.hotel.request.UserRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,9 +59,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(User user) {
-        // TODO Auto-generated method stub
+    public UserDO updateUser(UserRequest user, HttpServletRequest request) {
+        return null;
+    }
 
+    @Override
+    public UserDO updateUserPwd(UserRequest user,HttpServletRequest request) {
+        UserDO userDO = new UserDO();
+        User u = (User) request.getSession().getAttribute("user");
+        String oldpwd = MD5Utils.passwordToMD5(user.getOldpwd());
+        String newpwd = MD5Utils.passwordToMD5(user.getNewpwd());
+        boolean flag = userDAO.updateUserPwd(oldpwd,newpwd,u.getUsername())==1;
+        if(!flag){
+            userDO.setCode(Constant.User.WRONG_CODE);
+        }
+        return userDO;
     }
 
     @Override

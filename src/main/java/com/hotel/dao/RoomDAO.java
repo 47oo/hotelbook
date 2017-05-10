@@ -24,7 +24,7 @@ public interface RoomDAO {
 
     List<Room> list(@Param("start") int start, @Param("size") int size);
 
-    List<Room> listEmptyRoom(@Param("start") int start, @Param("size") int size);
+    List<Room> listByStatus(@Param("status") int status,@Param("start") int start, @Param("size") int size);
 
     /**
      * @param username
@@ -36,7 +36,7 @@ public interface RoomDAO {
      */
     void updateRoom(Room room);
 
-    void updateRoomStatus(@Param("status") int status, @Param("username") String username,@Param("room_id") int room_id);
+    void updateRoomStatus(@Param("status") int status, @Param("idcard")String idcard,@Param("username") String username,@Param("room_id") int room_id);
 
     List<Room> roomStatus(@Param("room_id") int room_id);
 }

@@ -31,4 +31,6 @@ public interface RoomService {
     CommonDO emptyRoom(Request request);
 
     CommonDO bookRoom(RoomQueryRequest roomQueryRequest, HttpServletRequest request);
+
+    CommonDO list(Request request);
 }

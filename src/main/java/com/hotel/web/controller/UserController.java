@@ -2,9 +2,7 @@ package com.hotel.web.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.hotel.common.constant.Constant;
-import com.hotel.request.RoomQueryRequest;
-import com.hotel.response.CommonDO;
+import com.hotel.request.UserRequest;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hotel.model.User;
-import com.hotel.request.Request;
-import com.hotel.service.RoomService;
 import com.hotel.service.UserService;
 
 /**
@@ -47,4 +43,9 @@ public class UserController {
         return userService.register(user);
     }
 
+    @RequestMapping(value = "/changepwd.action")
+    @ResponseBody
+    public Object changePwd(UserRequest userRequest,HttpServletRequest request){
+        return userService.updateUserPwd(userRequest,request);
+    }
 }

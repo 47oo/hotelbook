@@ -24,8 +24,13 @@ public class OrderServiceImpl implements OrderService {
     private OrderDAO orderDAO;
 
     @Override
-    public List<Order> listToAdmin(int start, int size) {
-        return null;
+    public CommonDO listToAdmin(OrderQueryRequest orderQueryRequest) {
+        int size = orderQueryRequest.getSize();
+        int start = (orderQueryRequest.getStart()-1)*size;
+        List<Order> list = orderDAO.listToAdmin(start,size);
+        CommonDO commonDO = new CommonDO();
+        commonDO.setData(order2OrderDO(list));
+        return commonDO;
     }
 
     @Override

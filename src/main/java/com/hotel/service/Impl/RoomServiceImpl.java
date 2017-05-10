@@ -51,7 +51,7 @@ public class RoomServiceImpl implements RoomService {
 
 	@Override
 	public CommonDO emptyRoom(Request request) {
-		List<Room> list = roomDAO.listEmptyRoom((request.getStart() - 1) * request.getSize(), request.getSize());
+		List<Room> list = roomDAO.listByStatus(Constant.Room.UNBOOK,(request.getStart() - 1) * request.getSize(), request.getSize());
 		CommonDO cd = new CommonDO();
 		List<RoomDO> dolist = new ArrayList<>();
 		RoomDO rd = null;
@@ -72,12 +72,12 @@ public class RoomServiceImpl implements RoomService {
 		User u = (User)request.getSession().getAttribute("user");
 		Room room = roomDAO.roomStatus(roomQueryRequest.getRoom_id()).get(0);
 		if(room.getStatus()==Constant.Room.UNBOOK){
-			roomDAO.updateRoomStatus(Constant.Room.BOOKING,u.getUsername(),roomQueryRequest.getRoom_id());
+			roomDAO.updateRoomStatus(Constant.Room.BOOKING,u.getIdcard(),u.getUsername(),roomQueryRequest.getRoom_id());
 			Order order = new Order();
 			order.setOrder_id(CommonUtils.randomOrderId(u.getIdcard()));
 			order.setCtime(TimeUtils.now());
 			long citime = judgeTime(roomQueryRequest.getCitime());
-			order.setCtime(citime);
+			order.setCitime(citime);
 			long cotime = judgeTime(roomQueryRequest.getCotime());
 			order.setCotime(cotime);
 			order.setMoney(room.getMoney()*TimeUtils.days(citime,cotime));
@@ -88,6 +88,24 @@ public class RoomServiceImpl implements RoomService {
 			commonDO.setCode(Constant.Room.WRONG_CODE);
 		}
 		return commonDO;
+	}
+
+	@Override
+	public CommonDO list(Request request) {
+		List<Room> list = roomDAO.list((request.getStart() - 1) * request.getSize(), request.getSize());
+		CommonDO cd = new CommonDO();
+		List<RoomDO> dolist = new ArrayList<>();
+		RoomDO rd = null;
+		for (Room room : list) {
+			rd = new RoomDO();
+			rd.setMoney(room.getMoney());
+			rd.setType(room.getType());
+			rd.setRoom_id(room.getRoom_id());
+			rd.setIdcard(room.getIdcard());
+			dolist.add(rd);
+		}
+		cd.setData(dolist);
+		return cd;
 	}
 
 	private long judgeTime(String time) {

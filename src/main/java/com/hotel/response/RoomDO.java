@@ -7,6 +7,7 @@ public class RoomDO {
 	private int room_id;
 	private String type;
 	private double money;
+	private String idcard;
 	public int getRoom_id() {
 		return room_id;
 	}
@@ -30,5 +31,13 @@ public class RoomDO {
 	}
 	public void setMoney(double money) {
 		this.money = money;
-	}	
+	}
+
+	public String getIdcard() {
+		return idcard;
+	}
+
+	public void setIdcard(String idcard) {
+		this.idcard = idcard;
+	}
 }

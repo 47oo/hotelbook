@@ -1,6 +1,10 @@
 package com.hotel.service;
 
 import com.hotel.model.Admin;
+import com.hotel.request.AdminRequest;
+import com.hotel.response.AdminDO;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author hp
@@ -8,10 +12,10 @@ import com.hotel.model.Admin;
  */
 public interface AdminService {
 
-	/**
-	 * 
-	 * @param admin
-	 */
-	public boolean checkAdmin(Admin admin);
+    /**
+     * @param admin
+     */
+    AdminDO checkAdmin(HttpServletRequest request, Admin admin);
 
+    AdminDO updatePwd(HttpServletRequest request, AdminRequest adminRequest);
 }

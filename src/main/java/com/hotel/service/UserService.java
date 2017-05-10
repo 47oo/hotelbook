@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.hotel.model.User;
+import com.hotel.request.UserRequest;
 import com.hotel.response.UserDO;
 
 /**
@@ -29,10 +30,10 @@ public interface UserService {
     /**
      * @param user
      */
-    void updateUser(User user);
+    UserDO updateUser(UserRequest user,HttpServletRequest request);
 
     UserDO getUserInfo(HttpServletRequest request);
 
-
+    UserDO updateUserPwd(UserRequest user,HttpServletRequest request);
     UserDO register(User user);
 }

@@ -16,7 +16,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			response.sendRedirect("/login.html");
 			return false;
 		}
-
 		return true;
 	}
 

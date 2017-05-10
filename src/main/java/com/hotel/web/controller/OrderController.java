@@ -27,5 +27,11 @@ public class OrderController {
 
        return  orderService.listToUser(orderQueryRequest,request);
     }
+    @RequestMapping("/list")
+    @ResponseBody
+    public Object list(OrderQueryRequest orderQueryRequest){
+
+        return orderService.listToAdmin(orderQueryRequest);
+    }
 
 }

@@ -12,30 +12,28 @@ import com.hotel.model.User;
  */
 public interface UserDAO {
 
-	/**
-	 * 
-	 * @param user
-	 */
-	public List<User> checkUser(User user);
+    /**
+     * @param user
+     */
+    public List<User> checkUser(User user);
 
-	/**
-	 * 
-	 * @param id
-	 */
-	public void deleteById(@Param("id")int id);
+    /**
+     * @param id
+     */
+    public void deleteById(@Param("id") int id);
 
-	/**
-	 * 
-	 * @param user
-	 */
-	public void insertUser(User user);
+    /**
+     * @param user
+     */
+    public void insertUser(User user);
 
-	public List<User> listToAdmin(@Param("start")int start,@Param("size")int size);
+    public List<User> listToAdmin(@Param("start") int start, @Param("size") int size);
 
-	/**
-	 * 
-	 * @param user
-	 */
-	public void updateUser(User user);
+    /**
+     * @param user
+     */
+    public void updateUser(User user);
+
+    public int updateUserPwd(@Param("oldpwd") String oldpwd, @Param("newpwd") String newpwd, @Param("username") String username);
 
 }

@@ -209,7 +209,46 @@
         });
     </script>
     <div id="changepwd" class="jumbotron" hidden>
+        <p><label>旧密码：<label><input id="oldpwd" type="password"/></p>
+        <p><label>新密码：<label><input id="newpwd" type="password"/></p>
+        <p><label>确认密码：<label><input id="newpwd2" type="password"/></p>
+        <p><button class="btn btn-success" onclick="changePwd()">保存</button></p>
     </div>
+    <script>
+        $("li#changepwd").click(function () {
+
+            $("div#main").hide();
+            $("div#personal").hide();
+            $("div#bookroom").hide();
+            $("div#order").hide();
+            $("div#changepwd").show();
+
+            $("li#personal").attr("class", "");
+            $("li#bookroom").attr("class", "");
+            $("li#order").attr("class", "");
+            $("li#changepwd").attr("class", "active");
+
+        });
+
+        var changePwd = function(){
+            var json = {oldpwd:$("#oldpwd").val(),
+                newpwd:$("#newpwd").val()};
+            $.ajax({
+                type: "post",
+                url: "/user/changepwd.action",
+                data: json,
+                dataType: "json",
+                success: function (data) {
+                    if (data["code"] == 1) {
+                        alert("修改成功，请重新登录");
+                        window.location.href="/adminlogin.html";
+                    } else {
+                        alert("error:密码错误");
+                    }
+                }
+            });
+        }
+    </script>
 </div> <!-- /container -->
 
 <script type="text/javascript" src="/js/bootstrap-datetimepicker.js"></script>

@@ -15,6 +15,7 @@ public class Room {
 	private int status;
 	private String username;
 	private int type = 3;
+	private String idcard;
 	public Room(){
 
 	}
@@ -75,5 +76,12 @@ public class Room {
 	public void setRoom_id(int room_id) {
 		this.room_id = room_id;
 	}
-	
+
+	public String getIdcard() {
+		return idcard;
+	}
+
+	public void setIdcard(String idcard) {
+		this.idcard = idcard;
+	}
 }

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>个人中心</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!-- Static navbar -->
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">管理员中心</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li id="superman"><a>会员管理</a></li>
+                <li id="admin"><a>客房管理</a></li>
+                <li id="order"><a>订单查询</a></li>
+                <li id="changepwd"><a>修改密码</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/adminlogin.html">退出</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+<div class="container">
+
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron" id="main">
+        <h1>有家酒店后台管理</h1>
+        <p>XXX----XXXXXX</p>
+        <p>电话：8888-8888-8888</p>
+        <p>
+            <a class="btn btn-lg btn-primary" role="button">欢迎 &raquo;</a>
+        </p>
+    </div>
+    <div id="superman" hidden class="jumbotron">
+        <table id="superman" class="table table-hover">
+        </table>
+    </div>
+    <script>
+        $("li#superman").click(function () {
+            var json = {};
+            $.ajax({
+                type: "post",
+                url: "/room/list.action",
+                data: json,
+                dataType: "json",
+                success: function (data) {
+                    if (data["code"] == 1) {
+                        $("div#main").hide();
+                        $("div#superman").show();
+                        $("div#admin").hide();
+                        $("div#order").hide();
+                        $("div#changepwd").hide();
+
+                        $("li#superman").attr("class", "active");
+                        $("li#admin").attr("class", "");
+                        $("li#order").attr("class", "");
+                        $("li#changepwd").attr("class", "");
+                        var $table = $("table#superman");
+                        $table.empty();
+                        $table.append('<tr><td>姓名</td><td>' + data["name"] + '</td></tr>');
+                        $table.append('<tr><td>邮箱</td><td>' + data["email"] + '</td></tr>');
+                        $table.append('<tr><td>手机</td><td>' + data["phone"] + '</td></tr>');
+
+                    } else {
+                        alert("error");
+                    }
+                }
+            });
+        });
+    </script>
+
+    <div id="admin" class="jumbotron" hidden>
+        <div class="control-group">
+            <label class="control-label">CiTime</label>
+            <input size="16" type="text" id="datetimeStart" data-date-format="yyyy MM dd" readonly
+                   class="form_datetime">
+
+            <label class="control-label">CoTime</label>
+            <input size="16" type="text" id="datetimeEnd" data-date-format="yyyy MM dd" readonly class="form_datetime">
+        </div>
+        <table id="admin" class="table table-hover">
+        </table>
+    </div>
+    <script>
+        var roomlist = function () {
+            $("div#main").hide();
+            $("div#superman").hide();
+            $("div#admin").show();
+            $("div#order").hide();
+            $("div#changepwd").hide();
+
+            $("li#superman").attr("class", "");
+            $("li#admin").attr("class", "active");
+            $("li#order").attr("class", "");
+            $("li#changepwd").attr("class", "");
+            var json = {};
+            $.ajax({
+                type: "post",
+                url: "/room/list.action",
+                data: json,
+                dataType: "json",
+                success: function (data) {
+                    if (data["code"] == 1) {
+
+                        var $table = $("table#admin");
+                        $table.empty();
+                        $table.append('<tr><td>客房号</td><td>身份证</td><td>类型</td><td>价格</td><td>操作</td></tr>');
+                        var $rooms = data["data"];
+                        $.each($rooms, function (index, room) {
+                            $table.append('<tr><td>' + room["room_id"] + '</td><td>'+room["idcard"]+'</td><td>' + room["type"] + '</td><td>' + room["money"] + '</td><td>' + '<span id ="' + room["room_id"] + '" onclick="book(this)" class="glyphicon glyphicon-plus" title="确认"></span>' +
+                                '</td></tr>'
+                            );
+                        });
+                    } else {
+                        alert("error");
+                    }
+                }
+            });
+        }
+        $("li#admin").click(function () {
+            roomlist();
+        });
+    </script>
+    <div id="order" class="jumbotron" hidden>
+        <table id="order" class="table table-hover">
+        </table>
+    </div>
+    <script>
+        $("li#order").click(function () {
+            var json = {};
+            $("div#main").hide();
+            $("div#superman").hide();
+            $("div#admin").hide();
+            $("div#order").show();
+            $("div#changepwd").hide();
+
+            $("li#superman").attr("class", "");
+            $("li#admin").attr("class", "");
+            $("li#order").attr("class", "active");
+            $("li#changepwd").attr("class", "");
+            $.ajax({
+                type: "post",
+                url: "/order/orderlist.action",
+                data: json,
+                dataType: "json",
+                success: function (data) {
+                    if (data["code"] == 1) {
+
+                        var $table = $("table#order");
+                        var $orders = data["data"];
+                        $table.empty();
+                        $table.append('<tr><td>订单号</td><td>房间号</td><td>入住时间</td><td>结束时间</td><td>消费金额</td></tr>');
+                        $.each($orders, function (index, order) {
+                            $table.append('<tr><td>' + order["order_id"] + '</td><td>' + order["room_id"] + '</td><td>' + order["citime"] + '</td><td>' + order["cotime"] + '</td><td>' + order['money'] + '</td></tr>');
+                        });
+
+                    } else {
+                        alert("error");
+                    }
+                }
+            });
+        });
+    </script>
+    <div id="changepwd" class="jumbotron" hidden>
+        <p><label>旧密码：<label><input id="oldpwd" type="password"/></p>
+        <p><label>新密码：<label><input id="newpwd" type="password"/></p>
+        <p><label>确认密码：<label><input id="newpwd2" type="password"/></p>
+        <p><button class="btn btn-success" onclick="changePwd()">保存</button></p>
+    </div>
+    <script>
+        $("li#changepwd").click(function () {
+
+            $("div#main").hide();
+            $("div#superman").hide();
+            $("div#admin").hide();
+            $("div#order").hide();
+            $("div#changepwd").show();
+
+            $("li#supermain").attr("class", "");
+            $("li#admin").attr("class", "");
+            $("li#order").attr("class", "");
+            $("li#changepwd").attr("class", "active");
+
+        });
+
+        var changePwd = function(){
+            var json = {oldpwd:$("#oldpwd").val(),
+                newpwd:$("#newpwd").val()};
+            $.ajax({
+                type: "post",
+                url: "/admin/changepwd.action",
+                data: json,
+                dataType: "json",
+                success: function (data) {
+                    if (data["code"] == 1) {
+                        alert("修改成功，请重新登录");
+                        window.location.href="/adminlogin.html";
+                    } else {
+                        alert("error:密码错误");
+                    }
+                }
+            });
+        }
+    </script>
+</div> <!-- /container -->
+
+<script type="text/javascript" src="/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript">
+    $("#datetimeStart").datetimepicker({
+        format: 'yyyy-mm-dd',
+        minView: 2,
+        language: 'zh-CN',
+        autoclose: true,
+        startDate: new Date(),
+        forceParse: 0
+    }).on("click", function () {
+        $("#datetimeStart").datetimepicker("setEndDate", $("#datetimeEnd").val())
+    });
+    $("#datetimeEnd").datetimepicker({
+        format: 'yyyy-mm-dd',
+        minView: 2,
+        language: 'zh-CN',
+        autoclose: true,
+        startDate: new Date(),
+        forceParse: 0
+    }).on("click", function () {
+        $("#datetimeEnd").datetimepicker("setStartDate", $("#datetimeStart").val())
+    });
+</script>
+
+</body>
+</html>

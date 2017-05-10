@@ -15,13 +15,9 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface OrderService {
 
-	/**
-	 * 
-	 * @param start
-	 * @param size
-	 */
-	public List<Order> listToAdmin(int start, int size);
 
-	public CommonDO listToUser(OrderQueryRequest orderQueryRequest, HttpServletRequest request);
+	 CommonDO listToAdmin(OrderQueryRequest orderQueryRequest);
+
+	 CommonDO listToUser(OrderQueryRequest orderQueryRequest, HttpServletRequest request);
 
 }

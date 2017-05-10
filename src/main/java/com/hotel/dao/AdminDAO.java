@@ -3,6 +3,7 @@ package com.hotel.dao;
 import java.util.List;
 
 import com.hotel.model.Admin;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @author hp
@@ -14,6 +15,7 @@ public interface AdminDAO {
 	 * 
 	 * @param admin
 	 */
-	public abstract List<Admin> checkAdmin(Admin admin);
+	 List<Admin> checkAdmin(Admin admin);
 
+    int updatePwd(@Param("oldpwd") String oldpwd, @Param("newpwd") String newpwd, @Param("username") String username);
 }

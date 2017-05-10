@@ -31,5 +31,8 @@ namespace：必须与对应的接口全类名一致  UserMapper.java
     	update user set email=#{email},phone=#{phone} where id=#{id}
     </update>
 
+	<update id="updateUserPwd">
+		update user set password=#{newpwd} where username=#{username} and password=#{oldpwd}
+	</update>
 
 </mapper>

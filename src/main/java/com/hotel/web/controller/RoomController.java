@@ -44,4 +44,9 @@ public class RoomController {
     public Object listEmptyRoom(Request request) {
         return roomService.emptyRoom(request);
     }
+    @RequestMapping("list.action")
+    @ResponseBody
+    public Object list(Request request){
+        return roomService.list(request);
+    }
 }
