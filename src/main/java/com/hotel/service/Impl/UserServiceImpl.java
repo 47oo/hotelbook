@@ -1,12 +1,16 @@
 package com.hotel.service.Impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.hotel.common.CommonUtils;
 import com.hotel.common.MD5Utils;
+import com.hotel.request.UserQueryRequest;
 import com.hotel.request.UserRequest;
+import com.hotel.response.CommonDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,10 +39,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser() {
-        // TODO Auto-generated method stub
+    public UserDO deleteUser(String username) {
+        UserDO u= new UserDO();
 
+        if(userDAO.deleteByUsername(username)!=1)
+            u.setCode(Constant.User.WRONG_CODE);
+        return u;
     }
+
 
     @Override
     public List<User> getUserByIdCard() {
@@ -53,10 +61,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> listUsertoAdmin() {
-        // TODO Auto-generated method stub
-        return null;
+    public CommonDO listUsertoAdmin(UserQueryRequest userQueryRequest) {
+        List<User> list = userDAO.listToAdmin(CommonUtils.start(userQueryRequest),userQueryRequest.getSize());
+        List<UserDO> dolist = new ArrayList<>();
+        UserDO udo =null;
+        for(User u:list){
+            udo = new UserDO();
+            userToUserDO(u,udo);
+            dolist.add(udo);
+        }
+        CommonDO commonDO = new CommonDO();
+        commonDO.setData(dolist);
+        return commonDO;
     }
+
 
     @Override
     public UserDO updateUser(UserRequest user, HttpServletRequest request) {
@@ -101,9 +119,11 @@ public class UserServiceImpl implements UserService {
     }
 
     private void userToUserDO(User u, UserDO ud) {
+        ud.setIdcard(u.getIdcard());
         ud.setEmail(u.getEmail());
         ud.setName(u.getName());
         ud.setPhone(u.getPhone());
+        ud.setUsername(u.getUsername());
     }
 
 }

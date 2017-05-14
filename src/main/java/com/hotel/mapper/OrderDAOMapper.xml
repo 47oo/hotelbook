@@ -17,4 +17,8 @@ namespace：必须与对应的接口全类名一致  UserMapper.java
     <select id="listToUser" resultType="com.hotel.model.Order">
       select * from order_t where username=#{username} limit #{start},#{size}
     </select>
+
+    <select id="listToAdmin" resultType="com.hotel.model.Order">
+        select * from order_t order by ctime limit #{start},#{size}
+    </select>
  </mapper>  

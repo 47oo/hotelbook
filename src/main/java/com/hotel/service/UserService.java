@@ -5,7 +5,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.hotel.model.User;
+import com.hotel.request.UserQueryRequest;
 import com.hotel.request.UserRequest;
+import com.hotel.response.CommonDO;
 import com.hotel.response.UserDO;
 
 /**
@@ -19,13 +21,13 @@ public interface UserService {
      */
     UserDO checkUser(HttpServletRequest request, User user);
 
-    void deleteUser();
+    UserDO deleteUser(String username);
 
     List<User> getUserByIdCard();
 
     List<User> getUserByUsername();
 
-    List<User> listUsertoAdmin();
+    CommonDO listUsertoAdmin(UserQueryRequest userQueryRequest);
 
     /**
      * @param user

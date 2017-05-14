@@ -61,36 +61,62 @@
     </div>
     <script>
         $("li#superman").click(function () {
+            $("div#main").hide();
+            $("div#superman").show();
+            $("div#admin").hide();
+            $("div#order").hide();
+            $("div#changepwd").hide();
+
+            $("li#superman").attr("class", "active");
+            $("li#admin").attr("class", "");
+            $("li#order").attr("class", "");
+            $("li#changepwd").attr("class", "");
+            listman();
+        });
+
+        var listman = function(){
             var json = {};
             $.ajax({
                 type: "post",
-                url: "/room/list.action",
+                url: "/user/list.action",
                 data: json,
                 dataType: "json",
                 success: function (data) {
                     if (data["code"] == 1) {
-                        $("div#main").hide();
-                        $("div#superman").show();
-                        $("div#admin").hide();
-                        $("div#order").hide();
-                        $("div#changepwd").hide();
 
-                        $("li#superman").attr("class", "active");
-                        $("li#admin").attr("class", "");
-                        $("li#order").attr("class", "");
-                        $("li#changepwd").attr("class", "");
                         var $table = $("table#superman");
                         $table.empty();
-                        $table.append('<tr><td>姓名</td><td>' + data["name"] + '</td></tr>');
-                        $table.append('<tr><td>邮箱</td><td>' + data["email"] + '</td></tr>');
-                        $table.append('<tr><td>手机</td><td>' + data["phone"] + '</td></tr>');
-
+                        $table.append('<tr><td>帐号</td><td>姓名</td><td>身份证</td><td>操作</td></tr>');
+                        var $mans = data['data'];
+                        $.each($mans, function (index, man) {
+                            $table.append('<tr><td>' + man["username"] + '</td><td>' + man["name"] + '</td><td>' + man["idcard"] + '</td><td>' + '<span id ="' + man["username"] + '" onclick="deleteman(this)" class="glyphicon glyphicon-remove" title="删除"></span>' +
+                                '</td></tr>'
+                            );
+                        });
                     } else {
                         alert("error");
                     }
                 }
             });
-        });
+        };
+        var deleteman = function(e){
+            var id = $(e).attr("id");
+            var json = {username:id};
+            if(confirm("你确定删除吗")){
+                $.ajax({
+                    type: "post",
+                    url: "/user/delete.action",
+                    data: json,
+                    dataType: "json",
+                    success: function (data) {
+                        if(data['code']==1){
+                            alert("已经删除");
+                            listman();
+                        }
+                    }
+                });
+            }
+        };
     </script>
 
     <div id="admin" class="jumbotron" hidden>
@@ -164,7 +190,7 @@
             $("li#changepwd").attr("class", "");
             $.ajax({
                 type: "post",
-                url: "/order/orderlist.action",
+                url: "/order/list.action",
                 data: json,
                 dataType: "json",
                 success: function (data) {

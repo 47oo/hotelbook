@@ -10,4 +10,5 @@ public class UserRequest {
 
     private String oldpwd;
     private String newpwd;
+    private String username;
 }

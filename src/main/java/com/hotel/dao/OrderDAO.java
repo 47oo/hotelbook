@@ -23,11 +23,10 @@ public interface OrderDAO {
 	 * @param start
 	 * @param size
 	 */
-	public List<Order> listToAdmin(@Param("start") int start, @Param("size") int size);
+	List<Order> listToAdmin(@Param("start") int start, @Param("size") int size);
 
 	/**
-	 * 
-	 * @param user
+	 *
 	 * @param start
 	 * @param size
 	 */

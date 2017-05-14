@@ -21,13 +21,13 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @RequestMapping("/orderlist")
+    @RequestMapping("/orderlist.action")
     @ResponseBody
     public Object listOrderToUser(OrderQueryRequest orderQueryRequest, HttpServletRequest request) {
 
        return  orderService.listToUser(orderQueryRequest,request);
     }
-    @RequestMapping("/list")
+    @RequestMapping("/list.action")
     @ResponseBody
     public Object list(OrderQueryRequest orderQueryRequest){
 

@@ -18,9 +18,9 @@ public interface UserDAO {
     public List<User> checkUser(User user);
 
     /**
-     * @param id
+     * @param username
      */
-    public void deleteById(@Param("id") int id);
+    int deleteByUsername(@Param("username") String username);
 
     /**
      * @param user

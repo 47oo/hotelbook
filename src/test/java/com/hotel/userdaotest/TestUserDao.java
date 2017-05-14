@@ -32,8 +32,8 @@ public class TestUserDao extends BaseJUnit{
 		for(int i=1;i<=10;i++){
 			room.setRoom_id(100+i);
 			int n = r.nextInt(3);
-			room.setType(n);
-			room.setMoney(n*100);
+			room.setType(n+1);
+			room.setMoney((n+1)*100);
 			room.setPicture("/images/"+i);
 			rd.insertRoom(room);
 		}

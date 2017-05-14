@@ -2,6 +2,7 @@ package com.hotel.web.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.hotel.request.UserQueryRequest;
 import com.hotel.request.UserRequest;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,5 +48,15 @@ public class UserController {
     @ResponseBody
     public Object changePwd(UserRequest userRequest,HttpServletRequest request){
         return userService.updateUserPwd(userRequest,request);
+    }
+    @RequestMapping(value = "/list.action")
+    @ResponseBody
+    public Object list(UserQueryRequest userQueryRequest){
+        return userService.listUsertoAdmin(userQueryRequest);
+    }
+    @RequestMapping(value = "/delete.action")
+    @ResponseBody
+    public Object delete(UserRequest userRequest){
+        return userService.deleteUser(userRequest.getUsername());
     }
 }

@@ -1,5 +1,7 @@
 package com.hotel.common;
 
+import com.hotel.request.Request;
+
 import java.util.Date;
 
 /**
@@ -12,6 +14,11 @@ public class CommonUtils {
         return idcard+time();
     }
     private static long time(){
-        return new Date().getTime();
+        return System.currentTimeMillis();
+    }
+
+    public static int start(Request request){
+
+        return (request.getStart()-1)*request.getSize();
     }
 }

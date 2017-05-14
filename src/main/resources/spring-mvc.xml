@@ -20,7 +20,17 @@
             <mvc:mapping path="/user/**"/>
             <mvc:exclude-mapping path="/user/login.action"/>
             <mvc:exclude-mapping path="/user/register.action"/>
+            <mvc:exclude-mapping path="/user/list.action"/>
+            <mvc:exclude-mapping path="/user/delete.action"/>
             <bean class="com.hotel.interceptor.AuthInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <!--设置拦截的路径-->
+            <mvc:mapping path="/admin/**"/>
+            <mvc:mapping path="/user/list.action"/>
+            <mvc:mapping path="/user/delete.action"/>
+            <mvc:exclude-mapping path="/admin/login.action"/>
+            <bean class="com.hotel.interceptor.AdminAuthInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
     <!--避免IE执行AJAX时，返回JSON出现下载文件 -->
@@ -51,13 +61,6 @@
     </bean>
 
     <!-- 定义跳转的文件的前后缀 ，视图模式配置-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->
-        <property name="prefix" value="/WEB-INF/jsp/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>
-
-    <!-- SpringMVC上传文件时，需要配置MultipartResolver处理器-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- 默认编码 -->
         <property name="defaultEncoding" value="utf-8"/>
@@ -65,6 +68,13 @@
         <property name="maxUploadSize" value="10485760000"/>
         <!-- 内存中的最大值 -->
         <property name="maxInMemorySize" value="40960"/>
+    </bean>
+
+    <!-- SpringMVC上传文件时，需要配置MultipartResolver处理器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
     </bean>
 
 </beans>    

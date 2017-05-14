@@ -20,8 +20,8 @@ namespace：必须与对应的接口全类名一致  UserMapper.java
     	where username=#{username} and password=#{password} 
     </select>
 
-    <delete id="deleteById" parameterType="int">
-    	delete from user where id =#{id}
+    <delete id="deleteByUsername" parameterType="String">
+    	delete from user where username =#{username}
     </delete>
 
     <select id="listToAdmin" resultType="com.hotel.model.User">
