@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f7ac1b6-c79a-41d1-9972-c2f5134825d8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/word/酒店预订系统毕业论文Base.docx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/word/酒店预订系统毕业论文Beta.docx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -1096,7 +1094,7 @@
       <workItem from="1494668575731" duration="120000" />
       <workItem from="1494755225631" duration="6497000" />
       <workItem from="1494857172934" duration="817000" />
-      <workItem from="1494938738307" duration="742000" />
+      <workItem from="1494938738307" duration="801000" />
     </task>
     <task id="LOCAL-00001" summary=" change to idea">
       <created>1494085808665</created>
@@ -1161,7 +1159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1494763180522</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="new word base beta">
+      <created>1494945122236</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1494945122236</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1191,7 +1196,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50896000" />
+    <option name="totallyTimeSpent" value="50955000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1241,7 +1246,8 @@
     <MESSAGE value="register html and order doing" />
     <MESSAGE value="order list" />
     <MESSAGE value="admin about" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin about" />
+    <MESSAGE value="new word base beta" />
+    <option name="LAST_COMMIT_MESSAGE" value="new word base beta" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
