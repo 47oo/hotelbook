@@ -12,4 +12,5 @@ public class RoomQueryRequest extends Request {
     private int room_id;
     private String citime;
     private String cotime;
+    private int status;
 }

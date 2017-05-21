@@ -26,7 +26,7 @@ public interface RoomService {
     /**
      * @param room
      */
-    void updateRoomStatus(Room room);
+    CommonDO updateRoomStatus(Room room);
 
     CommonDO emptyRoom(Request request);
 

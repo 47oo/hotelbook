@@ -6,6 +6,7 @@ import java.util.List;
 import com.hotel.common.CommonUtils;
 import com.hotel.common.TimeUtils;
 import com.hotel.common.constant.Constant;
+import com.hotel.convertor.RoomDOConvertor;
 import com.hotel.dao.OrderDAO;
 import com.hotel.exception.TimeNullException;
 import com.hotel.model.Order;
@@ -45,8 +46,11 @@ public class RoomServiceImpl implements RoomService {
 	}
 
 	@Override
-	public void updateRoomStatus(Room room) {
+	public CommonDO updateRoomStatus(Room room) {
+		// 这个地方不做判断我是懒得，你觉得怎么样
+		CommonDO commonDO= new CommonDO();
 		roomDAO.updateRoom(room);
+		return commonDO;
 	}
 
 	@Override
@@ -94,16 +98,7 @@ public class RoomServiceImpl implements RoomService {
 	public CommonDO list(Request request) {
 		List<Room> list = roomDAO.list((request.getStart() - 1) * request.getSize(), request.getSize());
 		CommonDO cd = new CommonDO();
-		List<RoomDO> dolist = new ArrayList<>();
-		RoomDO rd = null;
-		for (Room room : list) {
-			rd = new RoomDO();
-			rd.setMoney(room.getMoney());
-			rd.setType(room.getType());
-			rd.setRoom_id(room.getRoom_id());
-			rd.setIdcard(room.getIdcard());
-			dolist.add(rd);
-		}
+		List<RoomDO> dolist = RoomDOConvertor.toDO(list);
 		cd.setData(dolist);
 		return cd;
 	}

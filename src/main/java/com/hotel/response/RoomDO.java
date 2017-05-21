@@ -1,6 +1,8 @@
 package com.hotel.response;
 
 import com.hotel.common.constant.Constant;
+import lombok.Getter;
+import lombok.Setter;
 
 public class RoomDO {
 	
@@ -8,6 +10,7 @@ public class RoomDO {
 	private String type;
 	private double money;
 	private String idcard;
+	@Getter@Setter private String status;
 	public int getRoom_id() {
 		return room_id;
 	}

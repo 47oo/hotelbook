@@ -2,6 +2,7 @@ package com.hotel.web.controller;
 
 
 import com.hotel.common.constant.Constant;
+import com.hotel.model.Room;
 import com.hotel.request.Request;
 import com.hotel.request.RoomQueryRequest;
 import com.hotel.response.CommonDO;
@@ -39,6 +40,11 @@ public class RoomController {
         return co;
     }
 
+    @RequestMapping(value = "/roomstatus.action")
+    @ResponseBody
+    public  Object status(Room room){
+        return roomService.updateRoomStatus(room);
+    }
     @RequestMapping(value = "/roomlist.action")
     @ResponseBody
     public Object listEmptyRoom(Request request) {

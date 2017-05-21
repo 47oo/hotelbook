@@ -154,11 +154,11 @@
 
                         var $table = $("table#admin");
                         $table.empty();
-                        $table.append('<tr><td>客房号</td><td>身份证</td><td>类型</td><td>价格</td><td>操作</td></tr>');
+                        $table.append('<tr><td>客房号</td><td>身份证</td><td>类型</td><td>价格</td><td>状态</td><td>操作</td></tr>');
                         var $rooms = data["data"];
                         $.each($rooms, function (index, room) {
-                            $table.append('<tr><td>' + room["room_id"] + '</td><td>'+room["idcard"]+'</td><td>' + room["type"] + '</td><td>' + room["money"] + '</td><td>' + '<span id ="' + room["room_id"] + '" onclick="book(this)" class="glyphicon glyphicon-plus" title="确认"></span>' +
-                                '</td></tr>'
+                            $table.append('<tr><td>' + room["room_id"] + '</td><td>'+room["idcard"]+'</td><td>' + room["type"] + '</td><td>' + room["money"] + '</td><td>'+room['status']+'</td><td>' + '<span id ="' + room["room_id"] + '" onclick="ok(this)" class="glyphicon glyphicon-ok" title="更改为入住状态"></span>&nbsp;&nbsp;' +
+                                '<span id ="' + room["room_id"] + '" onclick="nook(this)" title="更改为未入住状态" class="glyphicon glyphicon-remove">'+'</span></td></tr>'
                             );
                         });
                     } else {
@@ -170,6 +170,50 @@
         $("li#admin").click(function () {
             roomlist();
         });
+        var ok = function (e) {
+            var room_id = $(e).attr("id");
+            var json = {
+                room_id :room_id,
+                status : 1
+            };
+            $.ajax({
+                type: "post",
+                url: "/room/roomstatus.action",
+                data: json,
+                dataType: "json",
+                success: function (data) {
+                    if (data["code"] == 1) {
+                        alert("退房成功");
+                        roomlist();
+                    } else {
+                        alert("退房失败");
+                        roomlist();
+                    }
+                }
+            });
+        };
+        var nook= function (e) {
+            var room_id = $(e).attr("id");
+            var json = {
+                room_id :room_id,
+                status:0
+            };
+            $.ajax({
+                type: "post",
+                url: "/room/roomstatus.action",
+                data: json,
+                dataType: "json",
+                success: function (data) {
+                    if (data["code"] == 1) {
+                        alert("入住成功");
+                        roomlist();
+                    } else {
+                        alert("入住失败");
+                        roomlist();
+                    }
+                }
+            });
+        }
     </script>
     <div id="order" class="jumbotron" hidden>
         <table id="order" class="table table-hover">
