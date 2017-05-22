@@ -183,10 +183,10 @@
                 dataType: "json",
                 success: function (data) {
                     if (data["code"] == 1) {
-                        alert("退房成功");
+                        alert("入住成功");
                         roomlist();
                     } else {
-                        alert("退房失败");
+                        alert("入住失败");
                         roomlist();
                     }
                 }
@@ -196,7 +196,7 @@
             var room_id = $(e).attr("id");
             var json = {
                 room_id :room_id,
-                status:0
+                status:-1
             };
             $.ajax({
                 type: "post",
@@ -205,10 +205,10 @@
                 dataType: "json",
                 success: function (data) {
                     if (data["code"] == 1) {
-                        alert("入住成功");
+                        alert("退房成功");
                         roomlist();
                     } else {
-                        alert("入住失败");
+                        alert("退房失败");
                         roomlist();
                     }
                 }
