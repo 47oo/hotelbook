@@ -26,6 +26,7 @@ public class RoomDOConvertor {
             }
            if(room.getStatus()==Constant.Room.UNBOOK){
                 rd.setStatus("未预订");
+                rd.setIdcard("");
            }else if(room.getStatus()==Constant.Room.BOOKING){
                rd.setStatus("已预订");
            }else if(room.getStatus()==Constant.Room.BOOKED){

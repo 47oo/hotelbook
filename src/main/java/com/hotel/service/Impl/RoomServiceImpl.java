@@ -39,9 +39,24 @@ public class RoomServiceImpl implements RoomService {
     @Autowired
     private OrderDAO orderDAO;
 
-    @Override
-    public void addRoom(Room room) {
 
+    @Override
+    public CommonDO addRoom(CommonsMultipartFile file, Room room) {
+        CommonDO commonDO = new CommonDO();
+        if(room.getRoom_id()==null) {
+            commonDO.setCode(Constant.Room.WRONG_CODE);
+            return commonDO;
+        }
+        String imagePath = getRoomImageSavePath() + "/" + room.getRoom_id() + ".jpg";
+        try {
+            upload(new File(imagePath),file);
+            room.setPicture(imagePath);
+            roomDAO.add(room);
+        } catch (Exception e) {
+            log.error("upload image error");
+            commonDO.setCode(Constant.Room.WRONG_CODE);
+        }
+        return commonDO;
     }
 
     @Override
@@ -117,23 +132,22 @@ public class RoomServiceImpl implements RoomService {
         String imagePath = getRoomImageSavePath() + "/" + roomId + ".jpg";
         File image = new File(imagePath);
         try {
-            if(file.isEmpty()){
-                commonDO.setCode(Constant.Room.WRONG_CODE);
-                return commonDO;
-            }
-            if (image.exists()) {
-                image.delete();
-            }
-            file.transferTo(image);
+            upload(image,file);
             roomDAO.updateRoomImage(roomId, imagePath);
             log.info("upload image success");
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.debug("file upload failure");
             commonDO.setCode(Constant.Room.WRONG_CODE);
         }
         return commonDO;
     }
-
+    private void upload(File image,CommonsMultipartFile file) throws IOException {
+        if(file.isEmpty()) throw new RuntimeException("no upload file");
+        if(image.exists()){
+            image.delete();
+        }
+        file.transferTo(image);
+    }
     private long judgeTime(String time) {
         Long sp = TimeUtils.getTimeStamp(time, "yyyy-MM-dd");
         if (sp == null) {

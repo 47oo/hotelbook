@@ -128,6 +128,8 @@
 
             <label class="control-label">CoTime</label>
             <input size="16" type="text" id="datetimeEnd" data-date-format="yyyy MM dd" readonly class="form_datetime">
+
+            <button class="btn btn-default pull-right" data-toggle="modal" data-target="#ADDROOM">添加房间</button>
         </div>
         <table id="admin" class="table table-hover">
         </table>
@@ -174,6 +176,8 @@
         roomId = null;
         var getRoomId = function(e){
             roomId = $(e).attr("id");
+            var newUrl = '/room-image/'+roomId+".jpg?t"+ Math.random();    //设置新的图片地址
+            $("#room-id").attr('src',newUrl);
         }
         var ok = function (e) {
             var room_id = $(e).attr("id");
@@ -311,6 +315,8 @@
                 <h4 class="modal-title" id="myModalLabel">图片上传</h4>
             </div>
             <div class="modal-body">
+                <h1>原始图片</h1>
+                <img id="room-id" src="#" style="border-image: auto"/>
                 <form name="imageForm" id="imageForm" action="/files" method="post"  enctype="multipart/form-data">
                     <h1>图片上传</h1>
                     <input type="file" name="image">
@@ -327,6 +333,42 @@
             var newUrl = '/files/'+roomId+"/image.action";    //设置新提交地址
             $("#imageForm").attr('action',newUrl);    //通过jquery为action属性赋值
             $("#imageForm").ajaxSubmit(function(data){
+                if(data.code==1){
+                    alert("success");
+                    $("#imageForm")[0].reset();
+                }else{
+                    alert("error");
+                }
+            });
+        });
+    </script>
+</div>
+<!--添加-->
+<div class="modal fade" id="ADDROOM" tabindex="-1" role="dialog" aria-labelledby="myModalADD" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalADD">新加房间</h4>
+            </div>
+            <div class="modal-body">
+                <form name="roomForm" id="roomForm" action="/room/add.action" method="post"  enctype="multipart/form-data">
+                    房间号：<input type="text" name="room_id" id="room_id" value=""/><br>
+                    价格：<input type="text" name="money" id="money" value=""/><br>
+                    类型：<input type="text" name="type" id="type" value=""/><br>
+                    <h2>图片上传</h2>
+                    <input type="file" name="image">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="addRoom" class="btn btn-primary">提交更改</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+    <script>
+        $("#addRoom").click(function(){
+            $("#roomForm").ajaxSubmit(function(data){
                 if(data.code==1){
                     alert("success");
                     $("#imageForm")[0].reset();

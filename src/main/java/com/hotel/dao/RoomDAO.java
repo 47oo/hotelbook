@@ -41,4 +41,6 @@ public interface RoomDAO {
     List<Room> roomStatus(@Param("room_id") int room_id);
 
     void updateRoomImage(@Param("room_id") Integer roomId, @Param("image") String imagePath);
+
+    void add(Room room);
 }

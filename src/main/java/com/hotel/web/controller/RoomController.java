@@ -11,7 +11,9 @@ import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -50,9 +52,14 @@ public class RoomController {
     public Object listEmptyRoom(Request request) {
         return roomService.emptyRoom(request);
     }
-    @RequestMapping("list.action")
+    @RequestMapping("/list.action")
     @ResponseBody
     public Object list(Request request){
         return roomService.list(request);
+    }
+    @RequestMapping("/add.action")
+    @ResponseBody
+    public Object add(@RequestParam("image") CommonsMultipartFile file,Room room){
+        return roomService.addRoom(file,room);
     }
 }

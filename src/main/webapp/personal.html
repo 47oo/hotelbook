@@ -130,7 +130,7 @@
                         $table.append('<tr><td>客房号</td><td>类型</td><td>价格</td><td>操作</td></tr>');
                         var $rooms = data["data"];
                         $.each($rooms, function (index, room) {
-                            $table.append('<tr><td>' + room["room_id"] + '</td><td>' + room["type"] + '</td><td>' + room["money"] + '</td><td>' + '<span id ="' + room["room_id"] + '" onclick="book(this)" class="glyphicon glyphicon-plus" title="预订"></span>' +
+                            $table.append('<tr><td><a href="javascript:void(0);"  data-toggle="modal" data-target="#myModal" onclick="getRoomId(this)" id='+ room["room_id"]+ '>' + room["room_id"] + '</a></td><td>' + room["type"] + '</td><td>' + room["money"] + '</td><td>' + '<span id ="' + room["room_id"] + '" onclick="book(this)" class="glyphicon glyphicon-plus" title="预订"></span>' +
                                 '</td></tr>'
                             );
                         });
@@ -167,6 +167,12 @@
                     }
                 }
             });
+        }
+        roomId = null;
+        var getRoomId = function(e){
+            roomId = $(e).attr("id");
+            var newUrl = '/room-image/'+roomId+".jpg";    //设置新的图片地址
+            $("#room-id").attr('src',newUrl);
         }
     </script>
     <div id="order" class="jumbotron" hidden>
@@ -250,7 +256,23 @@
         }
     </script>
 </div> <!-- /container -->
-
+<!--状态层-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">酒店图片</h4>
+            </div>
+            <div class="modal-body">
+               <img id="room-id" src="/room-image/" style="border-image: auto"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 <script type="text/javascript" src="/js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 <!-- Bootstrap core JavaScript

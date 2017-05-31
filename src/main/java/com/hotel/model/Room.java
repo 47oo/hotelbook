@@ -11,7 +11,7 @@ public class Room {
 	private int id;
 	private double money;
 	private String picture;
-	private int room_id;
+	private Integer room_id;
 	private int status;
 	private String username;
 	private int type = 3;
@@ -69,7 +69,7 @@ public class Room {
 		this.type = type;
 	}
 
-	public int getRoom_id() {
+	public Integer getRoom_id() {
 		return room_id;
 	}
 

@@ -15,9 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 public interface RoomService {
 
     /**
+     * @param file
      * @param room
      */
-    void addRoom(Room room);
+    CommonDO addRoom(CommonsMultipartFile file, Room room);
 
     /**
      * @param room

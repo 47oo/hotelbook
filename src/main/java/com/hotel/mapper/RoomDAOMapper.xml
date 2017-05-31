@@ -41,4 +41,9 @@ namespace：必须与对应的接口全类名一致  UserMapper.java
     <update id="updateRoomImage">
         update room set picture = #{image} where room_id=#{room_id}
     </update>
+
+    <insert id="add" parameterType="com.hotel.model.Room">
+        insert into room(room_id,picture,money,`type`)
+        values(#{room_id},#{picture},#{money},#{type})
+    </insert>
  </mapper>  
