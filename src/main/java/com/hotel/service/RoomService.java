@@ -4,6 +4,7 @@ import com.hotel.model.Room;
 import com.hotel.request.Request;
 import com.hotel.request.RoomQueryRequest;
 import com.hotel.response.CommonDO;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -33,4 +34,6 @@ public interface RoomService {
     CommonDO bookRoom(RoomQueryRequest roomQueryRequest, HttpServletRequest request);
 
     CommonDO list(Request request);
+
+    CommonDO uploadImage(CommonsMultipartFile file, Integer roomId);
 }

@@ -37,4 +37,8 @@ namespace：必须与对应的接口全类名一致  UserMapper.java
     <select id="roomStatus" resultType="com.hotel.model.Room">
         select * from room where room_id=#{room_id}
     </select>
+
+    <update id="updateRoomImage">
+        update room set picture = #{image} where room_id=#{room_id}
+    </update>
  </mapper>  
