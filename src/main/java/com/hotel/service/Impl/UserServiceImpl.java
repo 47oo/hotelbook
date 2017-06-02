@@ -27,6 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDO checkUser(HttpServletRequest request, User user) {
+        //此处使用MD5加密验证登录
         user.setPassword(MD5Utils.passwordToMD5(user.getPassword()));
         List<User> list = userDAO.checkUser(user);
         UserDO ud = new UserDO();
@@ -85,6 +86,7 @@ public class UserServiceImpl implements UserService {
     public UserDO updateUserPwd(UserRequest user,HttpServletRequest request) {
         UserDO userDO = new UserDO();
         User u = (User) request.getSession().getAttribute("user");
+        //数据库存储的加密后的密码，这里需要将密码加密后再做校验
         String oldpwd = MD5Utils.passwordToMD5(user.getOldpwd());
         String newpwd = MD5Utils.passwordToMD5(user.getNewpwd());
         boolean flag = userDAO.updateUserPwd(oldpwd,newpwd,u.getUsername())==1;

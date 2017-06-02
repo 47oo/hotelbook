@@ -43,13 +43,13 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public CommonDO addRoom(CommonsMultipartFile file, Room room) {
         CommonDO commonDO = new CommonDO();
-        if(room.getRoom_id()==null) {
+        if (room.getRoom_id() == null) {
             commonDO.setCode(Constant.Room.WRONG_CODE);
             return commonDO;
         }
         String imagePath = getRoomImageSavePath() + "/" + room.getRoom_id() + ".jpg";
         try {
-            upload(new File(imagePath),file);
+            upload(new File(imagePath), file);
             room.setPicture(imagePath);
             roomDAO.add(room);
         } catch (Exception e) {
@@ -74,7 +74,8 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public CommonDO emptyRoom(Request request) {
-        List<Room> list = roomDAO.listByStatus(Constant.Room.UNBOOK, (request.getStart() - 1) * request.getSize(), request.getSize());
+        List<Room> list = roomDAO.listByStatus(Constant.Room.UNBOOK,
+                (request.getStart() - 1) * request.getSize(), request.getSize());
         CommonDO cd = new CommonDO();
         List<RoomDO> dolist = new ArrayList<>();
         RoomDO rd = null;
@@ -125,14 +126,14 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public CommonDO uploadImage(CommonsMultipartFile file, Integer roomId) {
         CommonDO commonDO = new CommonDO();
-        if(roomId==null){
+        if (roomId == null) {
             commonDO.setCode(Constant.Room.WRONG_CODE);
             return commonDO;
         }
         String imagePath = getRoomImageSavePath() + "/" + roomId + ".jpg";
         File image = new File(imagePath);
         try {
-            upload(image,file);
+            upload(image, file);
             roomDAO.updateRoomImage(roomId, imagePath);
             log.info("upload image success");
         } catch (Exception e) {
@@ -141,13 +142,15 @@ public class RoomServiceImpl implements RoomService {
         }
         return commonDO;
     }
-    private void upload(File image,CommonsMultipartFile file) throws IOException {
-        if(file.isEmpty()) throw new RuntimeException("no upload file");
-        if(image.exists()){
+
+    private void upload(File image, CommonsMultipartFile file) throws IOException {
+        if (file.isEmpty()) throw new RuntimeException("no upload file");
+        if (image.exists()) {
             image.delete();
         }
         file.transferTo(image);
     }
+
     private long judgeTime(String time) {
         Long sp = TimeUtils.getTimeStamp(time, "yyyy-MM-dd");
         if (sp == null) {
@@ -160,7 +163,7 @@ public class RoomServiceImpl implements RoomService {
     private static String getRoomImageSavePath() {
         String str = RoomService.class.getClassLoader().getResource("").getPath();
         File f = new File(str);
-        str = f.getParentFile().getParent()+"/room-image";
+        str = f.getParentFile().getParent() + "/room-image";
         log.info(str);
         return str;
     }

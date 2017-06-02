@@ -36,8 +36,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public CommonDO listToUser(OrderQueryRequest orderQueryRequest, HttpServletRequest request) {
         CommonDO commonDO = new CommonDO();
+        //会员只能查看自己的订单，不可以查询其他人的订单
         User u = (User) request.getSession().getAttribute("user");
-        List<Order> list = orderDAO.listToUser(u.getUsername(), (orderQueryRequest.getStart() - 1) * orderQueryRequest.getSize(), orderQueryRequest.getSize());
+        List<Order> list = orderDAO.listToUser(u.getUsername(),
+                (orderQueryRequest.getStart() - 1) * orderQueryRequest.getSize(),
+                orderQueryRequest.getSize());
         commonDO.setData(order2OrderDO(list));
         return commonDO;
     }
